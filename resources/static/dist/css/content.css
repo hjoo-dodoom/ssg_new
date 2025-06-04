@@ -4,7 +4,7 @@
 
 .main_section{position:relative; padding:18rem 6rem 7rem 6rem;width:100%; min-height:100vh; min-height:100dvh; background-size: cover; background-repeat: no-repeat; background-position: center;}
 .main_section:not(.uniform){overflow: hidden;}
-.main_section .section_inner{max-width:150rem;margin:0 auto; height:100%; }
+.main_section .section_inner{max-width:128rem;margin:0 auto; height:100%; }
 .main_section .title{flex:1; position: relative; color:inherit; font-size:5.2rem; font-weight:700; word-break:keep-all;}
 .main_section .title .sub{position: absolute; left: 0; bottom: 100%; display:block; margin-bottom:1rem; color:#8D8D8D;font-size:1.8rem; font-weight:500;}
 .main_section:not(.uniform) .section_top{display:flex; align-items: flex-start;}
@@ -87,7 +87,7 @@
 
 .main_section.gift_card{}
 .main_section.gift_card .text_wrap p{width:80%;}
-.main_section.gift_card .swiper{margin-top:7.3rem;}
+.main_section.gift_card .swiper{margin-top:7.3rem; padding-bottom:3rem; overflow:hidden;}
 .main_section.gift_card .swiper-slide{position:relative; padding:4.4rem 4rem 3.4rem; border-radius: 2rem; }
 .main_section.gift_card .swiper-slide:nth-child(1){background: linear-gradient(180deg, #F3EDE4 0%, #FFFFFF 100%);}
 .main_section.gift_card .swiper-slide:nth-child(2){background: linear-gradient(180deg, #E8F2E5 0%, #FFFFFF 100%);}
@@ -96,7 +96,7 @@
 .main_section.gift_card .swiper-slide:nth-child(5){background: linear-gradient(180deg, #E8E1F0 0%, #FFFFFF 100%);}
 .main_section.gift_card .swiper-slide:nth-child(6){background: linear-gradient(180deg, #EDE7C9 0%, #FFFFFF 100%);}
 .main_section.gift_card .swiper-slide:after{content:''; width:1.2rem; height:11.2rem; position:absolute; top:5rem; right:4rem; background-repeat: no-repeat; background-position: top; background-size: contain; background-image:url('../../dist/images/content/logo_gift_ssg.png');}
-.main_section.gift_card .swiper-slide .title{margin-bottom:13.6rem; font-size:1.8rem; font-weight:600; line-height:1.55;}
+.main_section.gift_card .swiper-slide .title{margin-bottom:13.6rem; font-size:2.4rem; font-weight:600; line-height:1.55;}
 .main_section.gift_card .swiper-slide .img_wrap{text-align:center;}
 .main_section.gift_card .swiper-slide .img_pc{display:inline-block;}
 .main_section.gift_card .swiper-slide .img_m{display:none;}
@@ -156,7 +156,7 @@
 .main_section.uniform .section_top .cs_info .sub{color:#8D8D8D}
 .main_section.uniform .section_bottom{margin-left:8.5rem; display:flex;flex-wrap: wrap;margin-top:-2.4rem;margin-left:-4rem;}
 
-.main_section.uniform .card {width: calc(50% - 8rem);margin-left: 4rem; margin-right: 4rem;}
+.main_section.uniform .card {width: 100%; max-width:35rem; margin-left: 4rem; margin-right: 4rem;}
 .main_section.uniform .card:nth-child(1){}
 .main_section.uniform .card:nth-child(2){margin-top:12.6rem;}
 .main_section.uniform .card:nth-child(2n):not(:nth-child(2)){margin-top:6.4rem;}
@@ -167,7 +167,7 @@
 .main_section.uniform .card span{font-size:1.8rem; font-weight:500;}
 
 @media screen and (max-width: 1480px) {
-    .main_section.uniform .card {width: calc(50% - 6rem);margin-left: 3rem; margin-right: 3rem;}
+    .main_section.uniform .card {width: calc(50% - 6rem); max-width: none; margin-left: 3rem; margin-right: 3rem;}
     .main_section.uniform .card:nth-child(1){}
     .main_section.uniform .card:nth-child(2){margin-top:10.6rem;}
     .main_section.uniform .card:nth-child(2n):not(:nth-child(2)){margin-top:5.4rem;}

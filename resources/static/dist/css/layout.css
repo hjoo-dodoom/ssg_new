@@ -8,9 +8,9 @@
 }
 
 
-#hd_logo{min-width: 18rem;}
+#hd_logo{width:100%; max-width: 18.5rem;}
 #header{width:100%; position:absolute; top:0; left:0; color:#fff; background-color: transparent;}
-#header .hd_inner{display:flex; justify-content:space-between; align-items: center; padding:3.5rem 6rem;}
+#header .hd_inner{margin-top:2rem; display:flex; justify-content:space-between; align-items: center; padding:3.5rem 6rem;}
 #header .btn_hamburget_close{display:none; opacity: 0; width: 3.2rem; height: 3.2rem; position: absolute; top: 6rem; right: 6rem; border: 0; overflow: hidden; background-color:transparent; background-position: center; background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_close_white.svg'); transition: transform 0.3s ease, opacity 0.3s ease;}
 #header .btn_hamburget_close:hover{transform: rotate(90deg);}
 #header .btn_hamburger{margin-left:4rem; width: 4rem; height: 4rem; padding:.6rem; border: 0; background-color:transparent;}
@@ -75,17 +75,13 @@
 }
 
 @media screen and (max-width: 1024px){
-    /* 기준 */
-    #hd_logo {min-width:auto; width:12.6rem;}
+    #hd_logo {max-width:12.6rem;}
     #hd_links{display:none;}
-    #header .hd_inner{padding:2.2rem 2.4rem;overflow: auto;}
+    #header .hd_inner{margin-top:0rem;padding:2.2rem 2.4rem;overflow: auto;}
     #header .btn_hamburger{padding:0; width:2.2rem; height:2.2rem;}
     #header .btn_hamburger span{height:2px;}
     #header .btn_hamburger span + span{margin-top: .4rem;}
-
-
-
-    #header .btn_hamburget_close{top: 1.6rem; right: 2.4rem; width: 2.2rem; height: 2.2rem;}
+    #header .btn_hamburget_close{top: 2.2rem; right: 2.4rem; width: 2.2rem; height: 2.2rem;}
     #header.open #hd_logo{top: 2.2rem; left: 2.4rem;}
     #header.open .sitemap{flex-direction: column;}
     #header.open #hd_links{display:block; margin-top: 12.8rem;}
@@ -106,7 +102,7 @@
 
 
 #footer{padding-left: 6rem; padding-right: 6rem;background-color: #232323;font-size:1.5rem;margin-top:auto; color:#999999;}
-#footer .ft_inner{max-width:150rem;margin-left:auto;margin-right:auto;}
+#footer .ft_inner{max-width:128rem;margin-left:auto;margin-right:auto;}
 #footer .ft_top{padding:5rem 0;display: flex;align-items: center;flex-wrap:wrap; border-bottom: 1px solid #343333;}
 #footer .ft_top .ft_links{display: flex;}
 #footer .ft_top .ft_links .item{font-size: 1.5rem; font-weight: 600; line-height: 2.6;}
@@ -119,12 +115,15 @@
 #footer .ft_bottom {padding:4rem 0 7.4rem; display: flex; justify-content: space-between; align-items: flex-start;}
 #footer .ft_bottom .ft_info{display:flex;flex-wrap:wrap;max-width:66rem;opacity:0.7;word-break: keep-all;line-height: 1.6;}
 #footer .ft_bottom .ft_info .ft_copy{width: 100%;}
-
-
-
-
-#footer .ft_bottom .ft_familysite{position: relative; width:100%; max-width: 16rem; padding: 1.2rem 0; border-bottom: 1px solid #828282; font-size: 1.4rem;}
-#footer .ft_bottom .ft_familysite::after{content:''; position: absolute; right:0; top: 50%; transform: translateY(-50%); display:inline-block; width:1.6rem; height:1.6rem; background-position: center;background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_arrow_top_gray.svg');}
+#footer .ft_bottom .ft_familysite{position: relative; width:100%; max-width: 16rem;  border-bottom: 1px solid #828282; font-size: 1.4rem;}
+#footer .ft_bottom .ft_familysite strong{position:relative; display: block; padding: 1.2rem 0;}
+#footer .ft_bottom .ft_familysite strong::after{content:''; position: absolute; right:0; top: 50%; transform: translateY(-50%); transform-origin: 50% 50%; display:inline-block; width:1.6rem; height:1.6rem; background-position: center;background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_arrow_top_gray.svg');transition: transform 0.5s ease;}
+#footer .ft_bottom .ft_familysite:hover strong::after{transform: translateY(-50%) rotate(180deg);}
+#footer .ft_bottom .ft_familysite ul {position: absolute; display:none; bottom: 4rem; left: 0; border-top: 1px solid #e6e6e6; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6; background-color: #fff; padding: 1.6rem 1.8rem 1rem; width: 100%;}
+#footer .ft_bottom .ft_familysite:hover ul{display:block;}
+#footer .ft_bottom .ft_familysite ul li {color: #777;margin-bottom: .8rem;display: block;}
+#footer .ft_bottom .ft_familysite ul li:hover{color:#000;}
+#footer .ft_bottom .ft_familysite ul li + li{margin-top:.1rem;}
 
 @media screen and (max-width: 1020px) {
     #footer{padding-left: 2.4rem; padding-right:2.4rem;}

@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>법인영업몰</title>
+
+    <!-- styles -->
+    <link href="../../dist/css/normalize.css" rel="stylesheet" />
+    <link href="../../dist/css/layout.css" rel="stylesheet" />
+    <link href="../../dist/css/content.css" rel="stylesheet" />
+    <link href="../../dist/css/common.css" rel="stylesheet" />
+    <link href="../../dist/css/swiper.min.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="../../dist/js/jquery-2.2.4.min.js"></script>
+    <script src="../../dist/js/swiper.min.js"></script>
+    <script src="../../dist/js/common.js"></script>
+
+    <!-- icons -->
+    <link rel="shortcut icon" href="../../dist/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../dist/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <div id="layout">
+
+        <!-- 공통영역1 -->
+        <div id="header"></div>
+        <!-- <div id="header" class=""></div> -->
+
+        <script>
+            //html include
+            //헤더&푸터 개발 완료시 삭제해주세요
+            function includeFile(path, targetId) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', path, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById(targetId).innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            }
+            var includePath = "../../layout/header.html";
+            includeFile(includePath, 'header');
+        </script>
+        <!-- //공통영역1 -->
+
+        <div id="content" class="main">
+            <div class="main_section main_visual">
+                <div class="section_inner">
+                    <div class="txt_wrap">
+                        <p>기업체 임직원의<br />라이프스타일을 제안하는</p>
+                        <span>신세계 법인영업</span>
+                    </div>
+                    <div class="icon_scroll">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36">
+                            <path fill="#fff"
+                                d="M20.25 2.25h-4.5a9.01 9.01 0 0 0-9 9v13.5a9.01 9.01 0 0 0 9 9h4.5a9.01 9.01 0 0 0 9-9v-13.5a9.01 9.01 0 0 0-9-9ZM27 24.75a6.757 6.757 0 0 1-6.75 6.75h-4.5A6.757 6.757 0 0 1 9 24.75v-13.5a6.757 6.757 0 0 1 6.75-6.75h4.5A6.757 6.757 0 0 1 27 11.25v13.5ZM19.125 9v6.75a1.125 1.125 0 1 1-2.25 0V9a1.125 1.125 0 1 1 2.25 0Z" />
+                        </svg>
+                        <span>SCROLL DOWN</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 비즈니스 파트너 -->
+            <div class="main_section company">
+                <div class="section_inner">
+                    <div class="section_top">
+                        <div class="title">
+                            <span class="sub">법인영업</span>
+                            기업 고객과 함께 하는<br />비즈니스 파트너
+                        </div>
+                        <div class="text_wrap">
+                            <p>기업체 임직원의 라이프 스타일을 제안하는 신세계 법인영업입니다.</p>
+                            <div class="cs_info">
+                                <span class="sub">구매상담</span>
+                                <ul>
+                                    <li>T.02-3406-6900</li>
+                                    <li>F.02-3479-1090</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_bottom">
+                        <div class="partner_list">
+                            <div class="item">
+                                <div class="item_title">상품권</div>
+                                <p>신세계백화점, 이마트는 물론 쇼핑, 외식, 레저 등 다양한가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.</p>
+                            </div>
+                            <div class="item">
+                                <div class="item_title">기업체 GIFT</div>
+                                <p>임직원 선물, 판촉, 사은품 등 고객의 입장에서 사용하시는 목적에 맞게 폭넓은 아이템을 다양한 가격대로 설계해 드립니다.</p>
+                            </div>
+                            <div class="item">
+                                <div class="item_title">B2B/B2E</div>
+                                <p>고객사 맞춤형 서비스를 제공하며 많은 경험과 인프라로 구성된 경쟁력 있는 최적의 상품을 제안해 드립니다.</p>
+                            </div>
+                            <div class="item">
+                                <div class="item_title">유니폼</div>
+                                <p>성공하는 기업은 패션도 전략입니다. 앞서가는 패션과 품질로 기업의 목표달성과 브랜드가치를 높여드립니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rolling_wrap">
+                    <div class="rolling_inner">
+                        <div class="group animated">
+                            <div class="text">SHINSEGAE</div>
+                            <!-- <div class="text">SHINSEGAE</div>
+                            <div class="text">SHINSEGAE</div> -->
+                        </div>
+                        <div aria-hidden class="group animated">
+                            <div class="text">SHINSEGAE</div>
+                            <!-- <div class="text">SHINSEGAE</div>
+                            <div class="text">SHINSEGAE</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //비즈니스 파트너 -->
+            <!-- 신세계상품권 -->
+            <div class="main_section gift_card">
+                <div class="section_inner">
+                    <div class="section_top">
+                        <div class="title">
+                            <span class="sub">상품권</span>
+                            기업 신세계상품권
+                        </div>
+                        <div class="text_wrap">
+                            <p>신세계 상품권은 신세계백화점, 이마트는 물론 쇼핑/외식/레저 등 다양한 가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.
+                                <br />
+                                5천원, 1만원, 5만원, 10만원, 30만원, 50만원 총 6종이 준비되어 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="section_bottom">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />5천원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_5thousand.png"
+                                            alt="신세계 상품권 5천원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_5thousand_m.png"
+                                            alt="신세계 상품권 5천원권" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />1만원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_1million.png"
+                                            alt="신세계 상품권 1만원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_1million_m.png"
+                                            alt="신세계 상품권 1만원권" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />5만원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_5million.png"
+                                            alt="신세계 상품권 5만원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_5million_m.png"
+                                            alt="신세계 상품권 5만원권" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />10만원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_10million.png"
+                                            alt="신세계 상품권 10만원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_10million_m.png"
+                                            alt="신세계 상품권 10만원권" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />30만원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_30million.png"
+                                            alt="신세계 상품권 30만원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_30million_m.png"
+                                            alt="신세계 상품권 30만원권" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="title">신세계 상품권<br />50만원권</div>
+                                    <div class="img_wrap">
+                                        <img class="img_pc" src="../../dist/images/content/gift_card_50million.png"
+                                            alt="신세계 상품권 50만원권" />
+                                        <img class="img_m" src="../../dist/images/content/gift_card_50million_m.png"
+                                            alt="신세계 상품권 50만원권" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <script>
+                        const swiperGiftCardList = new Swiper('.main_section.gift_card .swiper', {
+                            slidesPerView: 3,
+                            spaceBetween: 55,
+                            breakpoints: {
+                                1024: {
+                                    slidesPerView: "auto",
+                                    spaceBetween: 16,
+                                }
+                            },
+                            pagination: {
+                                el: ".main_section.gift_card .swiper-pagination",
+                                clickable: true,
+                            },
+                        });
+                    </script>
+                </div>
+            </div>
+            <!-- //신세계상품권 -->
+            <!-- 임직원 선물 및 판촉물 -->
+            <div class="main_section gift_pd">
+                <div class="section_inner">
+                    <div class="section_top">
+                        <div class="title">
+                            <span class="sub">기업체 Gift</span>
+                            임직원 선물 및 <span class="br">판촉물</span>
+                        </div>
+                        <div class="text_wrap">
+                            <p>임직원 선물, 판촉, 사은품 등을 고객사의 입장에서 제안해드립니다.
+                                <br />
+                                폭넓은 아이템을 다양한 가격대로 설계해 드립니다.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="section_bottom">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img class="img_pc" src="../../dist/images/content/gift_pd01.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img_pc" src="../../dist/images/content/gift_pd02.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img_pc" src="../../dist/images/content/gift_pd03.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img_pc" src="../../dist/images/content/gift_pd04.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img_pc" src="../../dist/images/content/gift_pd05.jpg" alt="" />
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <script>
+                        const swiperGiftList = new Swiper('.main_section.gift_pd .swiper', {
+                            slidesPerView: 'auto',
+                            loop: true,
+                            spaceBetween: 40,
+                            breakpoints: {
+                                1024: {
+                                    spaceBetween: 16,
+                                }
+                            },
+                            autoplay: {
+                                delay: 0,
+                                disableOnInteraction: false
+                            },
+                            speed: 2000,
+                        });
+                    </script>
+                </div>
+            </div>
+            <!-- //임직원 선물 및 판촉물 -->
+            <!-- B2B/B2E 몰 -->
+            <div class="main_section mall">
+                <div class="section_inner">
+                    <div class="section_top">
+                        <div class="title">
+                            B2B/B2E 몰<br />고객사 맞춤형 <span class="br">B2B/B2E 서비스 제공</span>
+                        </div>
+                        <!-- <div class="text_wrap">
+                        <p></p>
+                    </div> -->
+                    </div>
+                    <div class="section_bottom">
+                        <div class="text_wrap">
+                            <p>기업체용 최적 상품/기업체 임직원을 위한 복지상품을 제안해 드립니다.</p>
+                            <p>많은 경험과 인프라로 구성된 경쟁력 있는 상품과 편리한 시스템을 제공합니다.</p>
+                            <button type="button" class="btn_mall">B2B/B2E 바로가기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //B2B/B2E 몰 -->
+            <!-- 유니폼 -->
+            <div class="main_section uniform">
+                <div class="section_inner">
+                    <div class="section_top">
+                        <div class="title">
+                            <span class="sub">유니폼</span>
+                            법인영업 유니폼
+                        </div>
+                        <div class="text_wrap">
+                            <p>30년 이상 축적된 인체공학적 데이터와 유니폼 전문팀의 노하우를 바탕으로, 신세계 법인영업 유니폼팀이 최신 패션 트렌드를 반영한 맞춤형 유니폼을 제안해
+                                드립니다.
+                            </p>
+                            <div class="cs_info">
+                                <span class="sub">유니폼 문의</span>
+                                <ul>
+                                    <li>T.02-3406-6968</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_bottom">
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_office.jpg" alt="" />
+                            </div>
+                            <span>office</span>
+                        </div>
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_franchise.jpg" alt="" />
+                            </div>
+                            <span>franchise</span>
+                        </div>
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_cooking.jpg" alt="" />
+                            </div>
+                            <span>cooking</span>
+                        </div>
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_shop.jpg" alt="" />
+                            </div>
+                            <span>shop</span>
+                        </div>
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_resort.jpg" alt="" />
+                            </div>
+                            <span>resort</span>
+                        </div>
+                        <div class="card">
+                            <div class="img_wrap">
+                                <img src="../../dist/images/content/person_working.jpg" alt="" />
+                            </div>
+                            <span>working</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- //유니폼 -->
+
+
+            <div id="floatting_fixed">
+                <button type="button" id="btn_totop" onclick="toTop();">상단으로</button>
+            </div>
+
+
+
+            <!-- 공통영역2 -->
+            <!-- 푸터 -->
+            <div id="footer"></div>
+            <script>
+                //html include
+                //헤더&푸터 개발 완료시 삭제해주세요
+                var includePath = "../../layout/footer.html";
+                includeFile(includePath, 'footer');
+            </script>
+            <!-- //푸터 -->
+            <!-- //공통영역2 -->
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>법인영업몰_공지사항</title>
+
+    <!-- styles -->
+    <link href="../dist/css/normalize.css" rel="stylesheet" />
+    <link href="../dist/css/layout.css" rel="stylesheet" />
+    <link href="../dist/css/content.css" rel="stylesheet" />
+    <link href="../dist/css/common.css" rel="stylesheet" />
+    <link href="../dist/css/swiper.min.css" rel="stylesheet" />
+    <link href="../dist/css/simplebar.css" rel="stylesheet" type="text/css" />
+
+    <!-- scripts -->
+    <script src="../dist/js/jquery-2.2.4.min.js"></script>
+    <script src="../dist/js/swiper.min.js"></script>
+    <script src="../dist/js/simplebar.min.js"></script>
+    <script src="../dist/js/common.js"></script>
+
+    <!-- icons -->
+    <link rel="shortcut icon" href="../dist/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../dist/favicon.ico" type="image/x-icon">
+
+    <script>
+        // html template include
+        // 개발 완료시 삭제해주세요
+        function includeTemplateFile(path, targetId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', path, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = xhr.responseText;
+
+                    var template = tempDiv.querySelector('template[data-title="' + targetId + '"]');
+                    if (template) {
+                        document.getElementById(targetId).appendChild(template.content.cloneNode(true));
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="layout">
+
+        <!-- 공통영역1 -->
+        <div id="header"></div>
+        <!-- <div id="header" class="open"></div> -->
+        <!-- //공통영역1 -->
+
+        <div id="content">
+            <div class="container">
+                <h2 class="page_title">공지사항</h2>
+                <div class="mp_box">
+                    <div class="board_list toggle_list">
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div><span class="top_fixed">상단고정</span>상단고정 공지사항</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p><br /><br />
+                                <img src="/resources/static/dist/images/dummy/main_visual_slider2.jpg">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>[시스템공지][공지] 쇼핑몰 이용가이드입니다.</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p><br />
+                                <img src="/resources/static/dist/images/dummy/brand_list1.jpg">
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <button type="button" class="bl_top">
+                                <div class="date">2024.11.29</div>
+                                <div class="subject">
+                                    <div>24.10월 무이자 카드 할부 안내4.10월 무이자 카드 할부 안내4.10월 무이자 카드 할부 안내4.10월
+                                        무이자 카드 할부 안내4.10월 무이자 카드 할부 안내4.10월 무이자 카드 할부 안내4.10월 무이자 카드 할부
+                                        안내4.10월 무이자 카드 할부 안내</div>
+                                </div>
+                            </button>
+                            <div class="bl_bottom" slide-content>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                                <p>안녕하세요, 시크릿스토어입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paging">
+                        <a href="javascript:;" class="pg_move pg_start">처음</a>
+                        <a href="javascript:;" class="pg_move pg_prev">이전</a>
+                        <a href="javascript:;" class="pg_page">1<span class="sound_only">페이지</span></a>
+                        <span class="sound_only">열린</span><strong class="pg_current">2</strong><span
+                            class="sound_only">페이지</span>
+                        <a href="javascript:;" class="pg_page">3<span class="sound_only">페이지</span></a>
+                        <a href="javascript:;" class="pg_page">4<span class="sound_only">페이지</span></a>
+                        <a href="javascript:;" class="pg_page">5<span class="sound_only">페이지</span></a>
+                        <a href="javascript:;" class="pg_move pg_next">다음</a>
+                        <a href="javascript:;" class="pg_move pg_end">맨끝</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="floatting_fixed">
+                <button type="button" id="btn_totop" onclick="toTop();">상단으로</button>
+            </div>
+
+
+
+            <!-- 공통영역2 -->
+            <!-- 푸터 -->
+            <div id="footer"></div>
+            <!-- //푸터 -->
+            <!-- //공통영역2 -->
+
+        </div>
+    </div>
+
+    <script>
+        //html include
+        //헤더&푸터 개발 완료시 삭제해주세요
+        function includeFile(path, targetId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', path, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById(targetId).innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+        var includePath = "../layout/header.html";
+        includeFile(includePath, 'header');
+    </script>
+    <script>
+        //html include
+        //헤더&푸터 개발 완료시 삭제해주세요
+        var includePath = "../layout/footer.html";
+        includeFile(includePath, 'footer');
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            //토글
+            document.querySelector('.toggle_list').addEventListener('click', function (event) {
+                var button = event.target;
+                while (button && !button.classList.contains('bl_top')) {
+                    button = button.parentElement;
+                }
+
+                if (!button) return;
+
+                var parentItem = button;
+                while (parentItem && !parentItem.classList.contains('item')) {
+                    parentItem = parentItem.parentElement;
+                }
+
+                if (!parentItem) return;
+
+                var content = parentItem.querySelector('.bl_bottom');
+
+                if (content) {
+                    toggleSlideItem(button, content);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

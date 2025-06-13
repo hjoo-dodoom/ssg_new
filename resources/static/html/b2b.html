@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>법인영업몰_기업체 구매상담</title>
+
+    <!-- styles -->
+    <link href="../dist/css/normalize.css" rel="stylesheet" />
+    <link href="../dist/css/layout.css" rel="stylesheet" />
+    <link href="../dist/css/content.css" rel="stylesheet" />
+    <link href="../dist/css/common.css" rel="stylesheet" />
+    <link href="../dist/css/swiper.min.css" rel="stylesheet" />
+    <link href="../dist/css/simplebar.css" rel="stylesheet" type="text/css" />
+
+    <!-- scripts -->
+    <script src="../dist/js/jquery-2.2.4.min.js"></script>
+    <script src="../dist/js/swiper.min.js"></script>
+    <script src="../dist/js/simplebar.min.js"></script>
+    <script src="../dist/js/common.js"></script>
+
+    <!-- icons -->
+    <link rel="shortcut icon" href="../dist/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../dist/favicon.ico" type="image/x-icon">
+
+    <script>
+        // html template include
+        // 개발 완료시 삭제해주세요
+        function includeTemplateFile(path, targetId) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', path, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = xhr.responseText;
+
+                    var template = tempDiv.querySelector('template[data-title="' + targetId + '"]');
+                    if (template) {
+                        document.getElementById(targetId).appendChild(template.content.cloneNode(true));
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="layout">
+
+        <!-- 공통영역1 -->
+        <div id="header" class="dark_mode"></div>
+        <!-- <div id="header" class=""></div> -->
+
+        <script>
+            //html include
+            //헤더&푸터 개발 완료시 삭제해주세요
+            function includeFile(path, targetId) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', path, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById(targetId).innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            }
+            var includePath = "../layout/header.html";
+            includeFile(includePath, 'header');
+        </script>
+        <!-- //공통영역1 -->
+
+        <div id="content">
+            <div class="sub_visual">
+                <div class="bg" style="background-image: url(../dist/images/content/bg_visual01.jpg)"></div>
+                <div class="section_inner">
+                    <div class="visual_text">
+                        <h3>기업체 구매상담</h3>
+                        <p>상품권 · 단체선물 · 유니폼<br />맞춤 상담을 제공합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <form action="">
+                    <div class="">
+                        <div class="od_box">
+                            <div class="od_title">
+                                <h3>기본정보</h3>
+                                <div class="od_sub">
+                                    <p class="required">모든 항목을 빠짐없이 입력해 주세요.</p>
+                                    <p class="warning">희망 납품 품목 및 운영방식은 다중 선택이 가능합니다.</p>
+                                </div>
+                            </div>
+                            <div class="od_table form form_type4 input_md">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:17rem">
+                                        <col>
+                                        <col style="width:17rem">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th class="required">회사명</th>
+                                            <td colspan="3">
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <input type="text" name="">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="no_border">
+                                            <td colspan="4">
+                                                <div class="flex-row">
+                                                    <div class="flex-item">
+                                                        <div class="th">
+                                                            <div class="required" style="width:17rem">담당자
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-item">
+                                                        <div class="th">
+                                                            <div class="required" style="width:17rem">부서</div>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="no_border">
+                                            <td colspan="4">
+                                                <div class="flex-row">
+                                                    <div class="flex-item">
+                                                        <div class="th">
+                                                            <div class="required" style="width:17rem">전화번호
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="tel" name="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-item">
+                                                        <div class="th">
+                                                            <div class="required" style="width:17rem">이메일
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="email" name="" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="align_top">희망납품 품목</th>
+                                            <td colspan="3">
+                                                <div class="check_list">
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            상품권
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            저단가 판촉물
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            VIP선물
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            일반선물
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            유니폼
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            단체복
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="align_top">운영방식</th>
+                                            <td colspan="3">
+                                                <div class="check_list">
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            Off-Line
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            B2B Mall
+                                                        </label>
+                                                    </div>
+                                                    <div class="item">
+                                                        <label class=" checkbox checkbox_type2">
+                                                            <input type="checkbox">
+                                                            <span class="ck_icon"></span>
+                                                            B2E Mall
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="required">요청가격대</th>
+                                            <td colspan="3">
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <input type="text" name="">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="od_box">
+                            <div class="od_title">
+                                <h3>상담내용</h3>
+                            </div>
+                            <div class="od_table form form_type4">
+                                <table>
+                                    <colgroup>
+                                        <col style="width:17rem">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                        <tr>
+                                            <th class="required">제목</th>
+                                            <td>
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <input type="text" class="max_text" maxlength="50"
+                                                            name="requestSubject" id="requestSubject">
+                                                    </div>
+                                                    <span class="max_len"><b>0</b>/50</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="align_top required">내용</th>
+                                            <td>
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <textarea name="" id="" class="max_text size_lg"
+                                                            maxlength=""></textarea>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="check_list mgt25 pdb56">
+                            <div class="item">
+                                <label class="checkbox checkbox_type2">
+                                    <input type="checkbox" name="check_yn" id="check_yn">
+                                    <span class="ck_icon"></span>
+                                    <em>사업자정보 수집 및 이용에 동의합니다.</em>
+                                    <button type="button" class="btn_inner"
+                                        onclick="openLayer('#terms_popup')">내용보기</button>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form_btns between_lg">
+                            <button type="submit" class="btn_submit">상담하기</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <!-- 약관 -->
+            <div id="terms_popup" class="layer_popup layer_default">
+                <div class="layer_content  width_lg height_md">
+                    <div class="layer_default_title">사업자 개인정보 수집 및 이용동의</div>
+                    <button type="button" class="layer_default_close" onclick="closeLayer(this)">팝업닫기</button>
+                    <div class="layer_default_content terms_content layer_scroll" data-simplebar>
+                        <div id="business_personal_info_provide_terms1">
+                            <script>
+                                var includePath = "../inc/terms.html";
+                                includeTemplateFile(includePath, 'business_personal_info_provide_terms1');
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <span class="layer_bg" onclick="closeLayer(this)"></span>
+            </div>
+            <!-- //약관 -->
+
+
+
+
+
+            <div id="floatting_fixed">
+                <button type="button" id="btn_totop" onclick="toTop();">상단으로</button>
+            </div>
+
+
+
+            <!-- 공통영역2 -->
+            <!-- 푸터 -->
+            <div id="footer"></div>
+            <script>
+                //html include
+                //헤더&푸터 개발 완료시 삭제해주세요
+                var includePath = "../layout/footer.html";
+                includeFile(includePath, 'footer');
+            </script>
+            <!-- //푸터 -->
+            <!-- //공통영역2 -->
+        </div>
+    </div>
+</body>
+
+</html>

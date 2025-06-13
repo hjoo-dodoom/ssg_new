@@ -30,7 +30,7 @@
     <div id="layout">
 
         <!-- 공통영역1 -->
-        <div id="header"></div>
+        <div id="header" class="dark_mode"></div>
         <!-- <div id="header" class=""></div> -->
 
         <script>
@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <script>
-                        const swiperGiftCardList = new Swiper('.main_section.gift_card .swiper', {
+                        var swiperGiftCardList = new Swiper('.main_section.gift_card .swiper', {
                             slidesPerView: 3,
                             spaceBetween: 55,
                             breakpoints: {
@@ -236,7 +236,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="section_bottom">
+                    <div class="section_bottom gift_pd_slide_wrap">
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
@@ -260,7 +260,7 @@
                         </div>
                     </div>
                     <script>
-                        const swiperGiftList = new Swiper('.main_section.gift_pd .swiper', {
+                        var swiperGiftList = new Swiper('.main_section.gift_pd .swiper', {
                             slidesPerView: 'auto',
                             loop: true,
                             spaceBetween: 40,

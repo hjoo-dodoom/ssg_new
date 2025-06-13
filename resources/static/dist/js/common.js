@@ -59,6 +59,111 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// 파일 선택
+function uploadFile(input) {
+    // closest() 대체 함수
+    function findParentByClass(el, className) {
+        while (el && !el.classList.contains(className)) {
+            el = el.parentElement;
+        }
+        return el;
+    }
+
+    var fileItem = findParentByClass(input, 'file_item');
+    var label = fileItem.querySelector('.file_name');
+
+    var fileName = '';
+    if (input.files && input.files.length > 0) {
+        fileName = input.files[0].name;
+        label.classList.add('selected');
+    } else {
+        fileName = '선택한 파일이 없습니다';
+        label.classList.remove('selected');
+    }
+
+    label.textContent = fileName;
+
+    // if (input.files && input.files[0]) {
+    //     var file = input.files[0];
+
+    //     // map 대신 수동 배열 변환
+    //     var allowedTypes = [];
+    //     input.getAttribute('file-type').toLowerCase().split(',').forEach(function(type) {
+    //         allowedTypes.push(type.trim());
+    //     });
+
+    //     var fileType = file.type.split('/')[1].toLowerCase();
+
+    //     // includes 대신 indexOf 사용
+    //     if (allowedTypes.indexOf(fileType) === -1) {
+    //         box_alert('허용되지 않는 파일 형식입니다.', 'info');
+    //         input.value = '';
+    //         return;
+    //     }
+
+    //     var maxSize = parseInt(input.getAttribute('max-size'), 10) * 1024 * 1024;
+    //     if (file.size > maxSize) {
+    //         box_alert('파일 크기는 ' + input.getAttribute('max-size') + 'MB 이하여야 합니다.', 'info');
+    //         input.value = '';
+    //         return;
+    //     }
+
+    //     var reader = new FileReader();
+    //     reader.onload = function (e) {
+    //         // 템플릿 리터럴 대신 문자열 연결
+    //         preview.style.backgroundImage = 'url(\'' + e.target.result + '\')';
+    //         preview.style.display = 'block';
+    //         removeBtn.style.display = 'block';
+    //     };
+    //     reader.readAsDataURL(file);
+    // }
+}
+
+// 비주얼 배너 스크롤 패럴랙스 효과
+document.addEventListener('DOMContentLoaded', function () {
+    var bg = document.querySelector('.sub_visual .bg');
+    var visualText = document.querySelector('.visual_text');
+
+    var current = 0;
+    var target = 0;
+    var isTicking = false;
+
+    function ease(current, target, speed) {
+        return current + (target - current) * speed;
+    }
+
+    function render() {
+        current = ease(current, target, 0.1);
+
+        if(bg){
+            bg.style.transform = 'translate3d(0px,' + (target * 0.5) + 'px, 0px)';
+        }
+
+        if (visualText) {
+            visualText.style.transform = 'translateY(' + (current * 0.6) + 'px)';
+        }
+
+        if (Math.abs(current - target) < 0.5) {
+            isTicking = false;
+        } else {
+            requestAnimationFrame(render);
+        }
+    }
+
+    function handleScroll() {
+        target = (window.scrollY || document.documentElement.scrollTop) * 0.9 ;
+        // target = (window.scrollY || document.documentElement.scrollTop) * 1.2;
+
+        if (!isTicking) {
+            isTicking = true;
+            requestAnimationFrame(render);
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+
+
 //경고창
 function alert_basic(title, txt, url, use_button) {
     if (title == '' || title == undefined) title = '';
@@ -115,7 +220,7 @@ function slideUp(target, duration) {
     target.style.marginTop = '0';
     target.style.marginBottom = '0';
 
-    window.setTimeout(function() {
+    window.setTimeout(function () {
         target.style.display = 'none';
         target.style.removeProperty('height');
         target.style.removeProperty('padding-top');
@@ -153,7 +258,7 @@ function slideDown(target, duration) {
     target.style.removeProperty('padding-bottom');
     target.style.removeProperty('margin-top');
     target.style.removeProperty('margin-bottom');
-    window.setTimeout(function() {
+    window.setTimeout(function () {
         target.style.removeProperty('height');
         target.style.removeProperty('overflow');
         target.style.removeProperty('transition-duration');
@@ -162,10 +267,10 @@ function slideDown(target, duration) {
     }, duration);
 };
 
-function slideToggle (target, duration) {
+function slideToggle(target, duration) {
     duration = duration || 500;
-    var targetElement = typeof target === 'string' 
-        ? document.querySelector(target) 
+    var targetElement = typeof target === 'string'
+        ? document.querySelector(target)
         : target;
     if (!target) return;
     if (isSliding) return;
@@ -179,15 +284,15 @@ function slideToggle (target, duration) {
 //로딩바 생성
 var lodingStatus = false;
 function loading(action) {
-    if(!lodingStatus){
+    if (!lodingStatus) {
         var loadingDiv = document.createElement("div");
         loadingDiv.classList.add("loading");
         document.body.appendChild(loadingDiv);
-    
+
         var loadingInnerDiv = document.createElement("div");
         loadingInnerDiv.classList.add("loading_inner");
         loadingDiv.appendChild(loadingInnerDiv);
-        
+
         lodingStatus = true;
     }
     var loadingDiv = document.querySelector('.loading');
@@ -272,21 +377,21 @@ document.addEventListener('DOMContentLoaded', function () {
             Array.prototype.forEach.call(cateLinks, function (linkItem) {
                 linkItem.classList.remove('active');
             });
-            
+
             // 현재 링크에 active 클래스 추가
             this.classList.add('active');
-            
+
             // 모든 서브 카테고리 숨기기
             Array.prototype.forEach.call(subCategories, function (subCategory) {
                 subCategory.style.display = 'none';
             });
-            
+
             // 선택된 카테고리 찾기
             var selectedCate = this.getAttribute('data-cate');
-            
+
             // 동적 셀렉터 대신 쿼리 변경
             var selectedSubCategory = document.querySelector('.cate_sub [data-cate-sub="' + selectedCate + '"]');
-            
+
             if (selectedSubCategory) {
                 selectedSubCategory.style.display = 'block';
             }
@@ -580,7 +685,7 @@ function closeLayer(button, target) {
 
 
 // 검색 바텀 시트 제어
-function showBottomSheet(event){
+function showBottomSheet(event) {
     event.preventDefault();
 
     var bottomSheet = document.getElementById("bottom_sheet");
@@ -592,7 +697,7 @@ function showBottomSheet(event){
 function updateSheetHeight(height) {
     var bottomSheet = document.getElementById("bottom_sheet");
     var sheetContent = bottomSheet.querySelector(".content");
-    
+
     if (height === 100) {
         var viewportHeight = window.innerHeight;
         var calculatedHeightInVh = Math.round((viewportHeight - 30) / viewportHeight * 100);
@@ -600,7 +705,7 @@ function updateSheetHeight(height) {
     } else {
         sheetContent.style.height = height + 'vh';
     }
-    
+
     // classList.toggle() 대신 명시적인 클래스 추가/제거
     if (height === 100) {
         bottomSheet.classList.add("fullscreen");
@@ -609,7 +714,7 @@ function updateSheetHeight(height) {
     }
 }
 
-function hideBottomSheet(){
+function hideBottomSheet() {
     var bottomSheet = document.getElementById("bottom_sheet");
     bottomSheet.classList.remove("show");
     document.querySelector('html').classList.remove('mobile_hidden');
@@ -620,39 +725,39 @@ var isDragging = false, startY, startHeight;
 function dragStart(e) {
     var bottomSheet = document.getElementById("bottom_sheet");
     var sheetContent = document.querySelector("#bottom_sheet .content");
-    
+
     isDragging = true;
-    
+
     // 터치 이벤트와 마우스 이벤트 모두 처리
     startY = e.pageY || (e.touches && e.touches[0] ? e.touches[0].pageY : 0);
-    
+
     // parseInt의 기본 기수 10으로 명시
     startHeight = parseInt(sheetContent.style.height || '0', 10);
-    
+
     bottomSheet.classList.add("dragging");
 }
 
 function dragging(e) {
     if (!isDragging) return;
-    
+
     // 터치 이벤트와 마우스 이벤트 모두 처리
     var currentY = e.pageY || (e.touches && e.touches[0] ? e.touches[0].pageY : 0);
     var delta = startY - currentY;
     var newHeight = startHeight + delta / window.innerHeight * 100;
-    
+
     updateSheetHeight(newHeight);
 }
 
 function dragStop() {
     var bottomSheet = document.getElementById("bottom_sheet");
     var sheetContent = document.querySelector("#bottom_sheet .content");
-    
+
     isDragging = false;
     bottomSheet.classList.remove("dragging");
-    
+
     // parseInt의 기본 기수 10으로 명시
     var sheetHeight = parseInt(sheetContent.style.height || '0', 10);
-    
+
     // 3항 연산자 대신 명시적인 조건문으로 변경
     if (sheetHeight < 65) {
         hideBottomSheet();
@@ -667,8 +772,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var observer = new MutationObserver(function (mutationsList, observer) {
         var searchBottomSheet = document.getElementById("search_bottom_sheet");
         var dragIcon = searchBottomSheet ? searchBottomSheet.querySelector(".drag-icon") : null;
-        
-        if(dragIcon){
+
+        if (dragIcon) {
             dragIcon.addEventListener("mousedown", dragStart);
             document.addEventListener("mousemove", dragging);
             document.addEventListener("mouseup", dragStop);
@@ -681,9 +786,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    observer.observe(document.body, { 
-        childList: true, 
-        subtree: true 
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 });
 
@@ -735,13 +840,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function closeAllLocations() {
         // forEach 대신 Array.prototype.forEach.call 사용
-        Array.prototype.forEach.call(locationItems, function(item) {
+        Array.prototype.forEach.call(locationItems, function (item) {
             item.classList.remove('active');
         });
     }
 
     // forEach 대신 Array.prototype.forEach.call 사용
-    Array.prototype.forEach.call(locationItems, function(item) {
+    Array.prototype.forEach.call(locationItems, function (item) {
         var links = item.querySelector('.links');
         var itemInnerLink = item.querySelector('.item_inner > a');
 
@@ -749,7 +854,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemInnerLink.addEventListener('click', function (e) {
             // IE의 stopPropagation 대응
             e.stopPropagation ? e.stopPropagation() : (e.cancelBubble = true);
-            
+
             if (item.classList.contains('active')) {
                 item.classList.remove('active');
             } else {
@@ -762,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function () {
             links.addEventListener('click', function (e) {
                 // IE의 target 대응
                 var target = e.target || e.srcElement;
-                
+
                 if (target.tagName === 'A') {
                     // closest() 대체 구현
                     var parentItem = target;
@@ -777,10 +882,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
 
                     target.classList.add('active');
-                    
+
                     var btnSelect = parentItem.querySelector('.item_inner > a');
                     btnSelect.textContent = target.textContent;
-                    
+
                     closeAllLocations();
                 }
             });
@@ -797,9 +902,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (infoHoverElements.length > 0) {
         // forEach 대신 Array.prototype.forEach.call 사용
-        Array.prototype.forEach.call(infoHoverElements, function(box) {
+        Array.prototype.forEach.call(infoHoverElements, function (box) {
             var btnInfoShow = box.querySelector('.btn_info_show');
-            
+
             btnInfoShow.addEventListener('click', function () {
                 if (box.classList.contains('active')) {
                     box.classList.remove('active');
@@ -812,12 +917,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('click', function (event) {
             // IE의 event.target 대응
             var target = event.target || event.srcElement;
-            
+
             Array.prototype.forEach.call(infoHoverElements, function (box) {
                 // contains 메서드 대체 구현
                 var isContains = box === target || box.contains(target);
-                
-                if ((!isContains && box.classList.contains('active')) || 
+
+                if ((!isContains && box.classList.contains('active')) ||
                     target.classList.contains('btn_info_close')) {
                     box.classList.remove('active');
                 }
@@ -829,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // 폼 관련 - 인풋 활성화
 document.addEventListener('DOMContentLoaded', function () {
     var activeInputs = document.querySelectorAll('[input-active] input');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(activeInputs, function (input) {
         input.addEventListener('input', function () {
@@ -857,7 +962,7 @@ function formatAmountWithComma(value) {
 //input tel 숫자만 입력
 function allowOnlyNumbersForTelInputs() {
     var telInputs = document.querySelectorAll('input[type="tel"]');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(telInputs, function (telInput) {
         telInput.addEventListener('input', function () {
@@ -874,18 +979,18 @@ document.addEventListener('DOMContentLoaded', function () {
 //input password text로 토글
 document.addEventListener('DOMContentLoaded', function () {
     var btnPasswordShow = document.querySelectorAll('.btn_password_show');
-    
+
     if (btnPasswordShow.length > 0) {
         // forEach 대신 Array.prototype.forEach.call 사용
-        Array.prototype.forEach.call(btnPasswordShow, function(button) {
+        Array.prototype.forEach.call(btnPasswordShow, function (button) {
             // closest() 대체 구현
             var inputContainer = button;
             while (inputContainer && !inputContainer.classList.contains('input')) {
                 inputContainer = inputContainer.parentElement;
             }
-            
+
             var prevInput = inputContainer ? inputContainer.querySelector('input') : null;
-            
+
             if (prevInput) {
                 button.addEventListener('click', function () {
                     if (button.classList.contains('active')) {
@@ -907,7 +1012,7 @@ document.addEventListener('input', function (event) {
     function elementMatches(element, selector) {
         var matches = (element.document || element.ownerDocument).querySelectorAll(selector),
             i = matches.length;
-        while (--i >= 0 && matches.item(i) !== element) {}
+        while (--i >= 0 && matches.item(i) !== element) { }
         return i > -1;
     }
 
@@ -916,24 +1021,24 @@ document.addEventListener('input', function (event) {
         var input = event.target;
         var text = input.value;
         var maxLength = parseInt(input.getAttribute('maxlength'), 10);
-        
+
         // closest() 대체 구현
         var inputGroup = input;
         while (inputGroup && !inputGroup.classList.contains('input_group')) {
             inputGroup = inputGroup.parentElement;
         }
-        
+
         var lenDisplay = inputGroup ? inputGroup.querySelector('.max_len b') : null;
 
         // 문자열 길이 계산 (스프레드 연산자 대신)
         var currentLength = text.length;
-        
+
         if (currentLength > maxLength) {
             // 문자열 자르기
             input.value = text.substring(0, maxLength);
             currentLength = maxLength;
         }
-        
+
         if (lenDisplay) {
             lenDisplay.textContent = currentLength;
         }
@@ -942,20 +1047,20 @@ document.addEventListener('input', function (event) {
 
 document.addEventListener('DOMContentLoaded', function () {
     var tabControl = document.querySelector('[tap-control]');
-    
+
     if (tabControl) {
         var tabBtns = tabControl.querySelectorAll('[tap-btns] button');
         var tabContents = tabControl.querySelectorAll('[tap-box]');
 
         // forEach 대신 Array.prototype.forEach.call 사용
-        Array.prototype.forEach.call(tabBtns, function(btn, index) {
-            btn.addEventListener('click', function() {
+        Array.prototype.forEach.call(tabBtns, function (btn, index) {
+            btn.addEventListener('click', function () {
                 // classList 변경
-                Array.prototype.forEach.call(tabBtns, function(b) {
+                Array.prototype.forEach.call(tabBtns, function (b) {
                     b.classList.remove('active');
                 });
-                
-                Array.prototype.forEach.call(tabContents, function(c) {
+
+                Array.prototype.forEach.call(tabContents, function (c) {
                     c.classList.remove('active');
                 });
 
@@ -1072,7 +1177,7 @@ function updateLotButtonStates(lotControl, input, initialValue) {
         // closest() 대신 수동 탐색
         var lotBox = findParentByClass(lotControl, 'lot_box');
         var changeBtn = lotBox ? lotBox.querySelector('.lot_change_btn') : null;
-        
+
         if (changeBtn) {
             if (input.value !== initialValue) {
                 // 클래스 토글 대신 명시적 추가/제거
@@ -1100,7 +1205,7 @@ function applyChoicesToSelect(element) {
 
     // 피카데이트 요소 체크
     var pikaSingle = findParentByClass(element, 'pika-single');
-    
+
     if (!pikaSingle && !element.classList.contains('choices-applied')) {
         var searchEnabled = element.hasAttribute('search-select');
         var choices = new Choices(element, {
@@ -1108,9 +1213,9 @@ function applyChoicesToSelect(element) {
             shouldSort: false,
             itemSelectText: '',
         });
-        
+
         element.classList.add('choices-applied');
-        
+
         var productOption = element.getAttribute('product-option');
         if (productOption) {
             choicesInstances[productOption] = choices;
@@ -1120,19 +1225,19 @@ function applyChoicesToSelect(element) {
 
 document.addEventListener('DOMContentLoaded', function () {
     var selectElements = document.querySelectorAll('select');
-    
+
     // forEach 대신 for 루프 사용
     for (var i = 0; i < selectElements.length; i++) {
         applyChoicesToSelect(selectElements[i]);
     }
 
-    var observer = new MutationObserver(function(mutations) {
+    var observer = new MutationObserver(function (mutations) {
         for (var j = 0; j < mutations.length; j++) {
             var mutation = mutations[j];
-            
+
             for (var k = 0; k < mutation.addedNodes.length; k++) {
                 var node = mutation.addedNodes[k];
-                
+
                 // nodeType과 tagName 체크
                 if (node.nodeType === 1) { // Node.ELEMENT_NODE
                     if (node.tagName === 'SELECT') {
@@ -1148,30 +1253,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    observer.observe(document.body, { 
-        childList: true, 
-        subtree: true 
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
     var selectElements = document.querySelectorAll('select');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
-    Array.prototype.forEach.call(selectElements, function(element) {
+    Array.prototype.forEach.call(selectElements, function (element) {
         applyChoicesToSelect(element);
     });
 
-    var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            Array.prototype.forEach.call(mutation.addedNodes, function(node) {
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            Array.prototype.forEach.call(mutation.addedNodes, function (node) {
                 // nodeType과 tagName 체크
                 if (node.nodeType === 1) { // Node.ELEMENT_NODE
                     if (node.tagName === 'SELECT') {
                         applyChoicesToSelect(node);
                     } else if (node.querySelectorAll) {
                         var newSelects = node.querySelectorAll('select');
-                        Array.prototype.forEach.call(newSelects, function(element) {
+                        Array.prototype.forEach.call(newSelects, function (element) {
                             applyChoicesToSelect(element);
                         });
                     }
@@ -1180,9 +1285,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    observer.observe(document.body, { 
-        childList: true, 
-        subtree: true 
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 });
 
@@ -1194,11 +1299,11 @@ function initializeDatepicker(element) {
     var originalValue = element.value;
     var yearRange;
     var yearAttr = element.getAttribute('data-year');
-    
+
     if (yearAttr) {
         // map 대신 수동 변환
         var years = [];
-        yearAttr.split(',').forEach(function(year) {
+        yearAttr.split(',').forEach(function (year) {
             years.push(parseInt(year.trim(), 10));
         });
         yearRange = years;
@@ -1234,30 +1339,30 @@ function initializeDatepicker(element) {
 
     var picker = new Pikaday(pickerOptions);
     element.value = originalValue;
-    
+
     // dataset 대신 attribute 사용
     element.setAttribute('data-initialized', 'true');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     var datepickers = document.querySelectorAll('.datepicker');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
-    Array.prototype.forEach.call(datepickers, function(element) {
+    Array.prototype.forEach.call(datepickers, function (element) {
         initializeDatepicker(element);
     });
 
-    var observer2 = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            Array.prototype.forEach.call(mutation.addedNodes, function(node) {
+    var observer2 = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            Array.prototype.forEach.call(mutation.addedNodes, function (node) {
                 // nodeType과 tagName 체크
                 if (node.nodeType === 1) { // Node.ELEMENT_NODE
                     if (node.classList.contains('datepicker')) {
                         initializeDatepicker(node);
                     }
-                    
+
                     var newDatepickers = node.querySelectorAll('.datepicker');
-                    Array.prototype.forEach.call(newDatepickers, function(element) {
+                    Array.prototype.forEach.call(newDatepickers, function (element) {
                         initializeDatepicker(element);
                     });
                 }
@@ -1271,9 +1376,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // unload 이벤트 대신 beforeunload 사용 (IE 호환)
-    window.attachEvent ? window.attachEvent('onbeforeunload', function() {
+    window.attachEvent ? window.attachEvent('onbeforeunload', function () {
         observer2.disconnect();
-    }) : window.addEventListener('beforeunload', function() {
+    }) : window.addEventListener('beforeunload', function () {
         observer2.disconnect();
     });
 });
@@ -1281,19 +1386,19 @@ document.addEventListener('DOMContentLoaded', function () {
 // 파일 입력 처리
 function singleFileInput() {
     var fileInputs = document.querySelectorAll('.file_single');
-    
+
     if (fileInputs.length > 0) {
         // forEach 대신 Array.prototype.forEach.call 사용
-        Array.prototype.forEach.call(fileInputs, function(fileInput) {
+        Array.prototype.forEach.call(fileInputs, function (fileInput) {
             fileInput.addEventListener('change', function () {
                 var file = this.files[0];
-                
+
                 // closest() 대체 구현
                 var fileInputContainer = this;
                 while (fileInputContainer && !fileInputContainer.classList.contains('file_input')) {
                     fileInputContainer = fileInputContainer.parentElement;
                 }
-                
+
                 var fileNameInput = fileInputContainer ? fileInputContainer.querySelector('.file_name') : null;
 
                 if (!file) {
@@ -1304,7 +1409,7 @@ function singleFileInput() {
                 // 옵셔널 체이닝 대신 명시적 null 체크
                 var fileTypeAttr = this.getAttribute('file-type');
                 var allowedTypes = fileTypeAttr ? fileTypeAttr.split(' ') : [];
-                
+
                 var fileType = file.name.split('.').pop().toLowerCase();
                 if (allowedTypes.length > 0 && allowedTypes.indexOf(fileType) === -1) {
                     box_alert(fileTypeAttr + '만 업로드 해주세요.', 'info');
@@ -1316,7 +1421,7 @@ function singleFileInput() {
                 // 파일 크기 체크
                 var maxSizeAttr = this.getAttribute('data-max-size');
                 var maxSize = maxSizeAttr ? parseFloat(maxSizeAttr) * 1024 * 1024 : null;
-                
+
                 if (maxSize && file.size > maxSize) {
                     box_alert('용량 제한은 ' + maxSizeAttr + 'MB 입니다.', 'info');
                     this.value = '';
@@ -1337,9 +1442,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // 날짜 컨트롤 함수
 function dateControl(startSelector, endSelector, period) {
     var buttons = document.querySelectorAll('.date_control button');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
-    Array.prototype.forEach.call(buttons, function(btn) {
+    Array.prototype.forEach.call(buttons, function (btn) {
         btn.classList.remove('active');
     });
 
@@ -1349,7 +1454,7 @@ function dateControl(startSelector, endSelector, period) {
 
     var endDate = new Date();
     var startDate = new Date();
-    
+
     switch (period) {
         case '7d':
             startDate.setDate(endDate.getDate() - 7);
@@ -1361,14 +1466,14 @@ function dateControl(startSelector, endSelector, period) {
             startDate.setMonth(endDate.getMonth() - 3);
             break;
     }
-    
+
     function formatDate(date) {
         var year = date.getFullYear();
         var month = ('0' + (date.getMonth() + 1)).slice(-2);
         var day = ('0' + date.getDate()).slice(-2);
         return year + '-' + month + '-' + day;
     }
-    
+
     document.querySelector(startSelector).value = formatDate(startDate);
     document.querySelector(endSelector).value = formatDate(endDate);
 }
@@ -1390,15 +1495,15 @@ function previewImage(input) {
 
     if (input.files && input.files[0]) {
         var file = input.files[0];
-        
+
         // map 대신 수동 배열 변환
         var allowedTypes = [];
-        input.getAttribute('file-type').toLowerCase().split(',').forEach(function(type) {
+        input.getAttribute('file-type').toLowerCase().split(',').forEach(function (type) {
             allowedTypes.push(type.trim());
         });
 
         var fileType = file.type.split('/')[1].toLowerCase();
-        
+
         // includes 대신 indexOf 사용
         if (allowedTypes.indexOf(fileType) === -1) {
             box_alert('허용되지 않는 파일 형식입니다.', 'info');
@@ -1425,11 +1530,11 @@ function previewImage(input) {
 }
 
 // 사진 제거 버튼 이벤트
-(function() {
+(function () {
     var removeButtons = document.querySelectorAll('.photo_remove');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
-    Array.prototype.forEach.call(removeButtons, function(button) {
+    Array.prototype.forEach.call(removeButtons, function (button) {
         button.addEventListener('click', function () {
             // closest() 대체 함수
             function findParentByClass(el, className) {
@@ -1442,7 +1547,7 @@ function previewImage(input) {
             var photoItem = findParentByClass(this, 'photo_item');
             var input = photoItem.querySelector('input[type="file"]');
             var preview = photoItem.querySelector('.preview');
-            
+
             input.value = '';
             preview.style.backgroundImage = '';
             preview.style.display = 'none';
@@ -1455,11 +1560,11 @@ function previewImage(input) {
 function handleRadioChange() {
     var groupName = this.getAttribute("name");
     var sameRadios = document.querySelectorAll('input[name="' + groupName + '"]');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(sameRadios, function (target) {
         var displayTargets = target.getAttribute("radio-display").split(" ");
-        
+
         // forEach 대신 일반 반복문 사용
         displayTargets.forEach(function (targetClass) {
             var elements = document.getElementsByClassName(targetClass);
@@ -1492,11 +1597,11 @@ function handleRadioChange() {
 // 셀렉트박스 변경에 따른 디스플레이
 function handleSelectChange() {
     var options = this.querySelectorAll('option');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(options, function (target) {
         var displayTargets = target.getAttribute("select-display").split(" ");
-        
+
         displayTargets.forEach(function (targetClass) {
             var elements = document.getElementsByClassName(targetClass);
             for (var i = 0; i < elements.length; i++) {
@@ -1518,7 +1623,7 @@ function handleSelectChange() {
 
     var selectedOption = this.options[this.selectedIndex];
     var selectedTargets = selectedOption.getAttribute("select-display");
-    
+
     if (selectedTargets) {
         var targetsArray = selectedTargets.split(" ");
         targetsArray.forEach(function (targetClass) {
@@ -1533,11 +1638,11 @@ function handleSelectChange() {
 document.addEventListener("DOMContentLoaded", function () {
     // 라디오 버튼 변경 이벤트 리스너 등록
     var radios = document.querySelectorAll('input[radio-display]');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(radios, function (radio) {
         radio.addEventListener("change", handleRadioChange);
-        
+
         // 페이지 로드 시 라디오 버튼의 상태에 따라 초기 화면 설정
         if (radio.checked) {
             handleRadioChange.call(radio);
@@ -1546,11 +1651,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 셀렉트 디스플레이 변경 이벤트 리스너 등록
     var selects = document.querySelectorAll('select.select_display');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(selects, function (select) {
         select.addEventListener("change", handleSelectChange);
-        
+
         // 페이지 로드 시 select 요소의 상태에 따라 초기 화면 설정
         if (checkVisibility(select)) {
             if (select.selectedIndex > 0) {
@@ -1579,7 +1684,7 @@ function checkVisibility(element) {
 // 라디오, 셀렉트 디스플레이 초기화 셋
 function radioSelectdisplaySet() {
     var selects = document.querySelectorAll('select.select-display');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(selects, function (select) {
         if (checkVisibility(select)) {
@@ -1590,7 +1695,7 @@ function radioSelectdisplaySet() {
     });
 
     var searchSelects = document.querySelectorAll('.search_select.select-display');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(searchSelects, function (select) {
         if (checkVisibility(select)) {
@@ -1602,7 +1707,7 @@ function radioSelectdisplaySet() {
     });
 
     var radios = document.querySelectorAll('input[radio-display]');
-    
+
     // forEach 대신 Array.prototype.forEach.call 사용
     Array.prototype.forEach.call(radios, function (radio) {
         if (checkVisibility(radio)) {
@@ -1618,22 +1723,22 @@ function imageDetail(src) {
     var imageDetailEl = document.getElementById('image_detail');
     var previewLayer = imageDetailEl ? imageDetailEl.querySelector('.layer_content') : null;
     var previewImg = document.getElementById('preview_image');
-    
+
     if (previewImg) {
         // 화살표 함수 대신 일반 함수
-        previewImg.onerror = function() {
+        previewImg.onerror = function () {
             box_alert('이미지를 불러올 수 없습니다.', 'info');
             closeLayer('', 'image_detail');
         };
-        
-        previewImg.onload = function() {
+
+        previewImg.onload = function () {
             var adjustment = window.innerWidth >= 1260 ? 80 : 40;
             if (previewLayer) {
                 previewLayer.style.width = (previewImg.naturalWidth + adjustment) + 'px';
             }
             console.log(adjustment);
         };
-        
+
         previewImg.src = src;
     }
 }
@@ -1665,7 +1770,7 @@ function toggleSlideItem(button, content, duration) {
     if (!toggleSlide) return;
 
     var targetSlide = content ? content : toggleSlide.querySelector('[slide-content]');
-    
+
     console.log(targetSlide);
 
     if (!targetSlide) return;

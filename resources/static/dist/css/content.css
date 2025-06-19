@@ -410,11 +410,11 @@
 .form_type4 input[type="tel"]:read-only,
 .form_type4 input[type="email"]:read-only{background-color:#e8e8e8;}
 .form_type4 .row + .row{margin-top: 4rem;}
+.form_type4 .row .row_top{margin-bottom:1.6rem;}
 .form_type4 .row .title{font-size:1.6rem; font-weight:500;}
 .form_type4 .row .warning{margin-top:1rem; font-size:1.4rem; font-weight:500;}
 .form_type4 .row .warning:before{content:""; vertical-align: bottom; display: inline-block; margin-right:0.4rem;width: 2.2rem;height: 2.2rem;border:0;background-color: transparent;overflow:hidden;background-position: center;background-repeat: no-repeat;background-image: url('../images/common/icon_warning.svg');}
 .form_type4 .input .btn{height:4.8rem;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;}
-.form_type4 .input_group{margin-top:1.6rem;}
 .form_type4 .input_group + p{margin-top:2rem;}
 .form_type4 p + .input_group{margin-top:2rem;}
 .form_type4 .file_input{}

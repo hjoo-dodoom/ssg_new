@@ -1098,7 +1098,7 @@ background-repeat:no-repeat;background-position:center center;background-image:u
 
 .about_us .section.biz .contents{display:flex; margin-top:6rem;}
 .about_us .section.biz .slide_nav{position:relative; padding-right: 15rem;width: 39rem; height:64rem; color:#fff; z-index: 2;}
-.about_us .section.biz .slide_nav:before{content:''; position:absolute; top:0; right:0; width:70rem; height:100%; background-color:#171C22; background-position: center 1rem; background-repeat: no-repeat; background-size:contain; background-image:url('../../dist/images/content/bg_ssg_building.png');}
+.about_us .section.biz .slide_nav:before{content:''; position:absolute; top:0; right:0; width:100vw; height:100%; background-color:#171C22; background-position: right 1rem; background-repeat: no-repeat; background-size:contain; background-image:url('../../dist/images/content/bg_ssg_building.png');}
 .about_us .section.biz .list_wrap{height:100%; position:relative; display: flex; flex-direction: column; justify-content: center; z-index:1;}
 .about_us .section.biz .list_wrap .title{font-size:5.6rem; font-weight:700; line-height:1;}
 .about_us .section.biz .list_wrap .tabs{margin-top:9.4rem; font-size:2rem; font-weight:600;}

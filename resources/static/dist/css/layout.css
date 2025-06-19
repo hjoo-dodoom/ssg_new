@@ -133,10 +133,10 @@
 #footer .ft_bottom .ft_familysite strong{position:relative; display: block; padding: 1.2rem 0;}
 #footer .ft_bottom .ft_familysite strong::after{content:''; position: absolute; right:0; top: 50%; transform: translateY(-50%); transform-origin: 50% 50%; display:inline-block; width:1.6rem; height:1.6rem; background-position: center;background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_arrow_top_gray.svg');transition: transform 0.5s ease;}
 #footer .ft_bottom .ft_familysite:hover strong::after{transform: translateY(-50%) rotate(180deg);}
-#footer .ft_bottom .ft_familysite ul {position: absolute; display:none; bottom: 4rem; left: 0; border-top: 1px solid #e6e6e6; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6; background-color: #fff; padding: 1.6rem 1.8rem 1rem; width: 100%;}
+#footer .ft_bottom .ft_familysite ul {position: absolute; display:none; bottom: 4rem; left: 0; border: 1px solid #828282; background-color: #232323; padding: 1.6rem 1.8rem 1rem; width: 100%;}
 #footer .ft_bottom .ft_familysite:hover ul{display:block;}
-#footer .ft_bottom .ft_familysite ul li {color: #777;margin-bottom: .8rem;display: block;}
-#footer .ft_bottom .ft_familysite ul li:hover{color:#000;}
+#footer .ft_bottom .ft_familysite ul li {color: #999999; margin-bottom: .8rem;display: block;}
+#footer .ft_bottom .ft_familysite ul li:hover{color:#fff;}
 #footer .ft_bottom .ft_familysite ul li + li{margin-top:.1rem;}
 
 @media screen and (max-width: 1020px) {

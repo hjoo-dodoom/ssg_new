@@ -158,21 +158,38 @@
                             </div>
 
                             <script>
+                                var swiperBiz = null;
+
+                                function getOffsetAfter(swiperEl) {
+                                    var lastSlide = swiperEl.querySelector('.swiper-slide:last-child');
+                                    if (!lastSlide) return 0;
+
+                                    var lastSlideWidth = lastSlide.offsetWidth;
+                                    var swiperWidth = swiperEl.offsetWidth;
+
+                                    // 마지막 슬라이드를 위한 오른쪽 여백 확보
+                                    var offset = Math.max(0, swiperWidth - lastSlideWidth);
+                                    return offset;
+                                }
+
                                 function initSwiperWithOffset() {
                                     var swiperEl = document.querySelector('.biz .swiper');
-                                    var pc_offset = swiperEl.offsetWidth - 600; // 100%의 절반 계산 (픽셀)
+                                    var offsetAfter = getOffsetAfter(swiperEl);
 
                                     return new Swiper(swiperEl, {
                                         slidesPerView: 'auto',
                                         spaceBetween: 0,
                                         observer: true,
                                         observeParents: true,
+                                        slidesOffsetAfter: offsetAfter,
+
                                         breakpoints: {
                                             1024: {
-                                                spaceBetween: 0,
-                                                slidesOffsetAfter: 0,
+                                                slidesOffsetAfter: offsetAfter,
+                                                spaceBetween: 0
                                             }
                                         },
+
                                         pagination: {
                                             el: '.biz .swiper-pagination',
                                             clickable: true
@@ -180,35 +197,17 @@
                                     });
                                 }
 
-                                var swiperBiz = null;
-
                                 function setupSwiper() {
                                     if (swiperBiz) {
-                                        swiperBiz.destroy(true, true); // 기존 인스턴스 제거
+                                        swiperBiz.destroy(true, true);
                                     }
-                                    swiperBiz = initSwiperWithOffset(); // 새로 초기화
+                                    swiperBiz = initSwiperWithOffset();
                                 }
 
-                                // 최초 실행
-                                window.addEventListener('load', function () {
-                                    setupSwiper();
-                                });
-
-                                // 리사이즈 대응 (IE11 호환)
-                                window.addEventListener('resize', function () {
-                                    // 약간의 지연으로 부하 방지
-                                    clearTimeout(window._swiperResizeTimeout);
-                                    window._swiperResizeTimeout = setTimeout(function () {
-                                        setupSwiper();
-                                    }, 200);
-                                });
-
                                 function slideTo(num) {
-                                    // 슬라이드 이동
-                                    swiperBiz.slideTo(num - 1, 500); // 500밀리초
+                                    swiperBiz.slideTo(num - 1, 500);
 
                                     var tabs = document.querySelectorAll('.tabs li a');
-
                                     for (var i = 0; i < tabs.length; i++) {
                                         tabs[i].classList.remove('active');
                                     }
@@ -217,6 +216,18 @@
                                         tabs[num - 1].classList.add('active');
                                     }
                                 }
+
+                                window.addEventListener('load', function () {
+                                    setupSwiper();
+                                });
+
+                                window.addEventListener('resize', function () {
+                                    clearTimeout(window._swiperResizeTimeout);
+                                    window._swiperResizeTimeout = setTimeout(function () {
+                                        setupSwiper();
+                                    }, 200);
+                                });
+
                             </script>
 
                         </div>
@@ -648,9 +659,9 @@
 
                                     initialSwiper();
 
-                                    window.addEventListener('resize', function () {
-                                        swiperUniform01.updateContainerSize();
-                                    });
+                                    // window.addEventListener('resize', function () {
+                                    //     swiperUniform01.updateContainerSize();
+                                    // });
                                 </script>
 
                             </div>

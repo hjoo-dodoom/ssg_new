@@ -64,7 +64,7 @@
 #header.open .hd_inner{display:flex; height:100%; overflow:auto;}
 #header.open .sitemap{display:flex; justify-content: space-between;width: 100%; max-width: 128rem; margin: 0 auto;}
 #header.open  #hd_links{flex:1; flex-direction: column;align-items: flex-start;}
-#header.open  #hd_links .item{color:#989898;  font-weight: 700;}
+#header.open  #hd_links .item{position:relative; color:#989898;  font-weight: 700;}
 #header.open  #hd_links .item.active{color:#FFFFFF;}
 #header.open  #hd_links .item a{padding: 1rem 0;font-size: 5rem;}
 #header.open  #hd_links .item + .item{margin-top: 4rem; margin-left: 0;}
@@ -74,7 +74,10 @@
 
 #hd_links{display:flex;align-items: center;}
 /* #hd_links .item{text-align:center;min-width:6.2rem;} */
-#hd_links .item a{display:block;font-size:1.8rem;}
+#hd_links .item a {display:block;font-size:1.8rem; position: relative; display: inline-block;}
+#hd_links .item a::after {content: ''; position: absolute; bottom: 0; left: 0; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease, transform-origin 0s 0.4s; pointer-events: none;}
+#hd_links .item a:hover::after {transform: scaleX(1); transform-origin: left; transition: transform 0.4s ease;}
+#hd_links .item a:not(:hover)::after {transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease, transform-origin 0s;}
 #hd_links .item + .item{margin-left: 11rem;}
 
 

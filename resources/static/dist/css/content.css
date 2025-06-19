@@ -26,7 +26,10 @@
     .main_section .section_top .text_wrap ul{font-size:1.4rem;}
 }
 
-.main_section.main_visual{background-image: url('../../dist/images/content/bg_main01.jpg');}
+.main_section.main_visual .bg{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('../../dist/images/content/bg_main01.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; transform: scale(1); transition: transform 2s ease; animation: zoomScale 2s ease 2s forwards; background-image: url('../../dist/images/content/bg_main01.jpg');}
+@keyframes zoomScale {
+    to {transform: scale(1.1);}
+}
 .main_section.main_visual .txt_wrap {margin-top: 12rem; color:#fff; overflow: hidden;}
 .main_section.main_visual .txt_wrap p{margin-bottom:3.5rem; font-size:7.4rem; font-weight:700;word-break: keep-all; opacity: 1; transform: translateY(0%); animation: mainVisualText 2s ease;animation-delay: 0; animation-fill-mode: both;}
 .main_section.main_visual .txt_wrap span{display: inline-block; font-size:2.4rem; font-weight:700; opacity: 0; transform: translateY(0%); animation: mainVisualText 2s ease; animation-delay: 1s; animation-fill-mode: both;}

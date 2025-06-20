@@ -1115,8 +1115,8 @@ background-repeat:no-repeat;background-position:center center;background-image:u
 .about_us .section.biz .swiper-slide:last-child{border-right:none;}
 .about_us .section.biz .swiper-slide-active ~ .swiper-slide{opacity: 1;}
 .about_us .section.biz .swiper-slide .slide_number{color:#C8C8C8; font-size:2.8rem; font-weight:700; line-height:1.4;}
-.about_us .section.biz .swiper-slide .img_wrap{margin-top: 4.2rem; padding: 0 4.5rem; text-align: center;}
-.about_us .section.biz .swiper-slide .title{margin-top: 5.8rem; color:#000000; font-size:1.8rem; font-weight:600; line-height:1.25;}
+.about_us .section.biz .swiper-slide .img_wrap{padding: 0 4.5rem; text-align: center;}
+.about_us .section.biz .swiper-slide .title{margin-top: 2rem; color:#000000; font-size:3.2rem; font-weight:600; line-height:1.25;}
 .about_us .section.biz .swiper-slide p{margin-top: 2rem; color:#000000; font-size:1.8rem; font-weight:400; line-height:1.6;}
 .about_us .section.biz .swiper-slide-active{opacity: 1;}
 

@@ -286,14 +286,14 @@
                                             <td colspan="3">
                                                 <div class="check_list">
                                                     <div class="item">
-                                                        <label class=" checkbox checkbox_type2">
+                                                        <label class="checkbox checkbox_type2 form_checked">
                                                             <input type="checkbox">
                                                             <span class="ck_icon"></span>
                                                             식품제안서(건기식포함)
                                                         </label>
                                                     </div>
                                                     <div class="item">
-                                                        <label class=" checkbox checkbox_type2">
+                                                        <label class="checkbox checkbox_type2 form_checked">
                                                             <input type="checkbox">
                                                             <span class="ck_icon"></span>
                                                             일반상품제안서
@@ -369,10 +369,10 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="file_item">
+                                                    <div class="file_item hide">
                                                         <div class="title">상품제안서</div>
                                                         <div class="file_content">
-                                                            <label>
+                                                            <label class="form_type">
                                                                 <input type="file" onchange="uploadFile(this)" />
                                                                 <span
                                                                     class="btn btn_type5 btn_black_line">파일선택</span>
@@ -383,10 +383,10 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="file_item">
+                                                    <div class="file_item hide">
                                                         <div class="title">식품제안서</div>
                                                         <div class="file_content">
-                                                            <label>
+                                                            <label class="form_type">
                                                                 <input type="file" onchange="uploadFile(this)" />
                                                                 <span
                                                                     class="btn btn_type5 btn_black_line">파일선택</span>
@@ -533,6 +533,19 @@
                 box_alert('협력회사 입점/제휴 신청 및 확인은 PC에서만 가능합니다.');
             }
         }
+
+
+        $('.form_checked').on('change', function(){
+            var index = $('.form_checked').index(this);
+
+            if(index === 0){ // 식품제안서(건기식포함)
+                $('.form_type').eq(1).closest('.file_item').toggleClass('hide');
+            }
+
+            if(index === 1){ // 일반상품제안서
+                $('.form_type').eq(0).closest('.file_item').toggleClass('hide');
+            }
+        });
 
 
 

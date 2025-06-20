@@ -1186,7 +1186,7 @@ background-repeat:no-repeat;background-position:center center;background-image:u
 .about_us .section.uniform .inner01 .swiper-wrapper{left: -11rem;align-items: center;}
 .about_us .section.uniform .inner01 .swiper-slide{position: relative; width: 30%; transform: scale(.8); transition: all .3s ease-in-out;}
 .about_us .section.uniform .inner01 .swiper-slide.swiper-slide-active{max-height: 53.8rem; margin: 0 11rem !important;transform: scale(1) !important;}
-.about_us .section.uniform .inner01 .slide_arrow {display: block; position: absolute; z-index: 10; top: 50%;  width: 4rem; height: 4rem; text-indent: -999em; overflow: hidden; border: 1px solid #D5D5D5; background-color: #FFFFFF; border-radius: 50%; background-position: 50%; background-repeat: no-repeat; background-size: 30px;}
+.about_us .section.uniform .inner01 .slide_arrow {display: block; position: absolute; z-index: 10; top: 50%;  width: 4rem; height: 4rem; text-indent: -999em; overflow: hidden; border: 1px solid #D5D5D5; background-color: #FFFFFF; border-radius: 50%; background-position: 50%; background-repeat: no-repeat; background-size: 2rem;}
 .about_us .section.uniform .inner01 .swiper-button-prev {transform: translate(-50%, -50%); left: calc((100% - 30%) / 2.4); background-image: url('../../dist/images/common/icon_btn_prev.svg');}
 .about_us .section.uniform .inner01 .swiper-button-next {transform: translate(50%, -50%); right: calc((100% - 30%) / 2.4); background-image: url('../../dist/images/common/icon_btn_next.svg');}
 .about_us .section.uniform .inner01 .swiper-slide .img_wrap{border-radius: 2rem; overflow: hidden;}

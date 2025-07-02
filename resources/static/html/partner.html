@@ -24,6 +24,7 @@
     <script src="../dist/js/swiper.min.js"></script>
     <script src="../dist/js/simplebar.min.js"></script>
     <script src="../dist/js/common.js"></script>
+    <script src="../dist/js/lenis.min.js"></script>
 
     <!-- icons -->
     <link rel="shortcut icon" href="../dist/favicon.ico" type="image/x-icon">
@@ -40,14 +41,26 @@
                     var tempDiv = document.createElement('div');
                     tempDiv.innerHTML = xhr.responseText;
 
-                    var template = tempDiv.querySelector('template[data-title="' + targetId + '"]');
-                    if (template) {
-                        document.getElementById(targetId).appendChild(template.content.cloneNode(true));
+                    var templates = tempDiv.getElementsByTagName('template');
+                    for (var i = 0; i < templates.length; i++) {
+                        var template = templates[i];
+                        if (template.getAttribute('data-title') === targetId) {
+                            // 임시 div에 template의 innerHTML 삽입
+                            var tempContent = document.createElement('div');
+                            tempContent.innerHTML = template.innerHTML;
+
+                            var target = document.getElementById(targetId);
+                            while (tempContent.firstChild) {
+                                target.appendChild(tempContent.firstChild);
+                            }
+                            break;
+                        }
                     }
                 }
             };
             xhr.send();
         }
+
     </script>
 </head>
 

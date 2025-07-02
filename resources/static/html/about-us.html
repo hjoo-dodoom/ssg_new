@@ -20,6 +20,7 @@
     <script src="../dist/js/swiper.min.js"></script>
     <script src="../dist/js/simplebar.min.js"></script>
     <script src="../dist/js/common.js"></script>
+    <script src="../dist/js/lenis.min.js"></script>
 
     <!-- icons -->
     <link rel="shortcut icon" href="../dist/favicon.ico" type="image/x-icon">
@@ -182,7 +183,6 @@
                                         observer: true,
                                         observeParents: true,
                                         slidesOffsetAfter: offsetAfter,
-
                                         breakpoints: {
                                             1024: {
                                                 slidesOffsetAfter: offsetAfter,
@@ -193,6 +193,21 @@
                                         pagination: {
                                             el: '.biz .swiper-pagination',
                                             clickable: true
+                                        },
+                                        on: {
+                                            slideChange: function () {
+                                                var activeIndex = this.realIndex;
+                                                var tabs = document.querySelectorAll('.tabs li a');
+
+                                                for (var i = 0; i < tabs.length; i++) {
+                                                    if (i === activeIndex) {
+                                                        tabs[i].classList.add('active');
+                                                    } else {
+                                                        tabs[i].classList.remove('active');
+                                                    }
+                                                }
+
+                                            }
                                         }
                                     });
                                 }
@@ -259,101 +274,1088 @@
                         <div class="top">
                             <span class="type">상품권</span>
                             <div class="title">신세계상품권</div>
-                            <p>신세계백화점, 이마트는 물론 쇼핑, 외식, 레저 등 다양한 가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.</p>
+                            <p>신세계 법인영업에서는 신세계상품권의 다량 판매를 담당하고 있습니다.</p>
                         </div>
                         <div class="contents">
+                            <div class="item">
+                                <div class="item_top">
+                                    <div class="title">상품권 소개</div>
+                                    <p>신세계백화점, 이마트는 물론 쇼핑, 외식, 레저 등 다양한 가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.
+                                        <br />
+                                        신세계상품권은 5천원, 1만원, 5만원, 10만원, 30만원, 50만원 총 6종이 준비되어 있습니다.
+                                    </p>
+                                </div>
+                                <div class="item_bottom">
+                                    <div class="swiper">
+                                        <div class="swiper-wrapper">
+                                            <!-- Slides -->
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />5천원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_5thousand.png"
+                                                        alt="신세계 상품권 5천원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_5thousand_m.png"
+                                                        alt="신세계 상품권 5천원권" />
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />1만원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_1million.png"
+                                                        alt="신세계 상품권 1만원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_1million_m.png"
+                                                        alt="신세계 상품권 1만원권" />
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />5만원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_5million.png"
+                                                        alt="신세계 상품권 5만원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_5million_m.png"
+                                                        alt="신세계 상품권 5만원권" />
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />10만원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_10million.png"
+                                                        alt="신세계 상품권 10만원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_10million_m.png"
+                                                        alt="신세계 상품권 10만원권" />
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />30만원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_30million.png"
+                                                        alt="신세계 상품권 30만원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_30million_m.png"
+                                                        alt="신세계 상품권 30만원권" />
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="title">신세계 상품권<br />50만원권</div>
+                                                <div class="img_wrap">
+                                                    <img class="img_pc"
+                                                        src="../dist/images/content/gift_card_50million.png"
+                                                        alt="신세계 상품권 50만원권" />
+                                                    <img class="img_m"
+                                                        src="../dist/images/content/gift_card_50million_m.png"
+                                                        alt="신세계 상품권 50만원권" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                    <script>
+                                        var swiperGiftCardList = new Swiper('.about_us .gift_card .swiper', {
+                                            slidesPerView: 'auto',
+                                            spaceBetween: 0,
+                                            touchRatio: 0,//드래그 금지
+                                            observer: true,
+                                            observeParents: true,
+                                            breakpoints: {
+                                                1024: {
+                                                    slidesPerView: "auto",
+                                                    spaceBetween: 16,
+                                                    touchRatio: 1,
+                                                }
+                                            },
+                                            pagination: {
+                                                el: ".about_us .gift_card .swiper-pagination",
+                                                clickable: true,
+                                            },
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item_top">
+                                    <div class="title">이용안내</div>
+                                </div>
+                                <div class="item_bottom">
+                                    <div class="tab_list">
+                                        <a href="javascript:;" data-tab-name="shopping" class="on">쇼핑</a>
+                                        <a href="javascript:;" data-tab-name="food">외식</a>
+                                        <a href="javascript:;" data-tab-name="hotel">호텔</a>
+                                        <a href="javascript:;" data-tab-name="play">레저/문화</a>
+                                        <a href="javascript:;" data-tab-name="health">건강검진</a>
+                                    </div>
 
-                            <div class="section_bottom">
-                                <div class="swiper">
-                                    <div class="swiper-wrapper">
-                                        <!-- Slides -->
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />5천원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_5thousand.png"
-                                                    alt="신세계 상품권 5천원권" />
-                                                <img class="img_m"
-                                                    src="../dist/images/content/gift_card_5thousand_m.png"
-                                                    alt="신세계 상품권 5천원권" />
-                                            </div>
+                                    <div class="tab_contents" data-tab-title="shopping">
+                                        <div class="info">
+                                            <div class="tab_title">쇼핑</div>
+                                            <p>신세계상품권은 <span class="spot">백화점 전점, 이마트 등 다양한 곳에서 쇼핑</span>하실 때 사용하실 수
+                                                있습니다.</p>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />1만원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_1million.png"
-                                                    alt="신세계 상품권 1만원권" />
-                                                <img class="img_m" src="../dist/images/content/gift_card_1million_m.png"
-                                                    alt="신세계 상품권 1만원권" />
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />5만원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_5million.png"
-                                                    alt="신세계 상품권 5만원권" />
-                                                <img class="img_m" src="../dist/images/content/gift_card_5million_m.png"
-                                                    alt="신세계 상품권 5만원권" />
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />10만원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_10million.png"
-                                                    alt="신세계 상품권 10만원권" />
-                                                <img class="img_m"
-                                                    src="../dist/images/content/gift_card_10million_m.png"
-                                                    alt="신세계 상품권 10만원권" />
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />30만원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_30million.png"
-                                                    alt="신세계 상품권 30만원권" />
-                                                <img class="img_m"
-                                                    src="../dist/images/content/gift_card_30million_m.png"
-                                                    alt="신세계 상품권 30만원권" />
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="title">신세계 상품권<br />50만원권</div>
-                                            <div class="img_wrap">
-                                                <img class="img_pc" src="../dist/images/content/gift_card_50million.png"
-                                                    alt="신세계 상품권 50만원권" />
-                                                <img class="img_m"
-                                                    src="../dist/images/content/gift_card_50million_m.png"
-                                                    alt="신세계 상품권 50만원권" />
+                                        <ul class="brand_list">
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_shinsegae.png"
+                                                        alt="신세계백화점 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계백화점</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_emart.png"
+                                                        alt="이마트 대표 이미지">
+                                                </div>
+                                                <div class="name">이마트</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_ssg.png"
+                                                        alt="SSG닷컴 대표 이미지">
+                                                </div>
+                                                <div class="name">에스에스지닷컴</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_shinsegae_duty.png"
+                                                        alt="신세계 면세점 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계 면세점</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_yeoju_outlet.png"
+                                                        alt="여주 프리미엄 아울렛 대표 이미지">
+                                                </div>
+                                                <div class="name">여주 프리미엄 아울렛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_paju_outlet.png"
+                                                        alt="파주 프리미엄 아울렛 대표 이미지">
+                                                </div>
+                                                <div class="name">파주 프리미엄 아울렛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_busan_outlet.png"
+                                                        alt="부산 프리미엄 아울렛 대표 이미지">
+                                                </div>
+                                                <div class="name">부산 프리미엄 아울렛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_siheung_outlet.png"
+                                                        alt="시흥 프리미엄 아울렛 대표 이미지">
+                                                </div>
+                                                <div class="name">시흥 프리미엄 아울렛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_jejupremium_center.png"
+                                                        alt="제주 프리미엄 전문점 대표 이미지">
+                                                </div>
+                                                <div class="name">제주 프리미엄 전문점</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_yeju.png"
+                                                        alt="여주 375 아울렛 대표 이미지">
+                                                </div>
+                                                <div class="name">여주375아울렛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_starfield.png"
+                                                        alt="스타필드 대표 이미지">
+                                                </div>
+                                                <div class="name">스타필드</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_starfieldcity.png"
+                                                        alt="스타필드 시티 대표 이미지">
+                                                </div>
+                                                <div class="name">스타필드시티</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_centerfileld.png"
+                                                        alt="더샵스앳센터필드 대표 이미지">
+                                                </div>
+                                                <div class="name">더샵스앳센터필드</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_casamia.png"
+                                                        alt="까사미아 대표 이미지">
+                                                </div>
+                                                <div class="name">까사미아</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_emartevery.png"
+                                                        alt="이마트 에브리데이 대표 이미지">
+                                                </div>
+                                                <div class="name">이마트 에브리데이</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_boonthe.png"
+                                                        alt="분더샵 대표 이미지">
+                                                </div>
+                                                <div class="name">분더샵</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_chicor.png"
+                                                        alt="시코르 대표 이미지">
+                                                </div>
+                                                <div class="name">시코르<span class="etc">(일부 매장 제외)</span></div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_factorystore.png"
+                                                        alt="신세계 팩토리스토어 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계팩토리스토어</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_nobrand.png"
+                                                        alt="노브랜드 대표 이미지">
+                                                </div>
+                                                <div class="name">노브랜드<span class="etc">(일부 매장 제외)</span></div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_electromart.png"
+                                                        alt="일렉트로마트 대표 이미지">
+                                                </div>
+                                                <div class="name">일렉트로마트</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_mollys.png"
+                                                        alt="몰리스 펫샵 대표 이미지">
+                                                </div>
+                                                <div class="name">몰리스 펫샵</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_jaju.png"
+                                                        alt="JAJU 전문점 대표 이미지">
+                                                </div>
+                                                <div class="name">JAJU 전문점</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_winemore.png"
+                                                        alt="와인앤모어 대표 이미지">
+                                                </div>
+                                                <div class="name">와인앤모어</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_cheil.png"
+                                                        alt="제일모직 대표 이미지">
+                                                </div>
+                                                <div class="name">제일모직</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_kgc.png"
+                                                        alt="정관장 대표 이미지">
+                                                </div>
+                                                <div class="name">정관장</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_acnestudios.png"
+                                                        alt="아크네스튜디오 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">아크네스튜디오 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_alexanderwang.png"
+                                                        alt="알렉산더왕 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">알렉산더왕 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_brunello.png"
+                                                        alt="브루넬로쿠치네리 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">브루넬로쿠치네리 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_byredo.png"
+                                                        alt="바이레도 도산 대표 이미지">
+                                                </div>
+                                                <div class="name">바이레도 도산</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_chromehearts.png"
+                                                        alt="크롬하츠 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">크롬하츠 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_emporio_armani.png"
+                                                        alt="엠포리오 아르마니 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">엠포리오 아르마니 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_fontana.png"
+                                                        alt="폰타나 밀라노 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">폰타나 밀라노 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_giorgio_armani.png"
+                                                        alt="조르지오 아르마니 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">조르지오 아르마니 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_gap.png"
+                                                        alt="갭 전문점 대표 이미지">
+                                                </div>
+                                                <div class="name">갭 전문점</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_herno.png"
+                                                        alt="에르노 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">에르노 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_moncler.png"
+                                                        alt="몽클레르 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">몽클레르 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_sacai.png"
+                                                        alt="사카이 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">사카이 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_ugg.png"
+                                                        alt="어그 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">어그 청담</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_jlindeberg.png"
+                                                        alt="제이린드버그 청담 대표 이미지">
+                                                </div>
+                                                <div class="name">제이린드버그 청담</div>
+                                            </li>
+                                        </ul>
+                                        <p class="desc">※ 스타필드의 경우 BMW, BMW 정비소, 수 노래연습장, 현대모터스, 제네시스, H&M, COS,
+                                            앤아더스토리즈에서 사용 제외됩니다.</p>
+                                        <div class="notice">
+                                            <div class="title">유의사항</div>
+                                            <div class="inner">
+                                                <div class="row">
+                                                    <div class="sub_title">• 전국 신세계백화점 사용처</div>
+                                                    <ul>
+                                                        <li>- 강남점 / 신세계 사우스시티 / 광주신세계 / 김해점 / 대구신세계 / 대전신세계 Art &
+                                                            Science / 마산점 / 본점 / 센텀시티 / 스타필드 하남점 / 의정부점 / 천안아산점 / 타임스퀘어점
+                                                            / 스타일마켓 대전점</li>
+                                                        <li>- 대표번호 : 1588-1234</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="sub_title">• 인터넷 쇼핑몰 사용방법</div>
+                                                    <ul>
+                                                        <li><span class="strong">-SSG.COM</span> : 홈페이지 또는 앱(APP)접속하여
+                                                            [SSG MONEY 전환]신청 후 아래 방법을 통해 접수
+                                                            <table>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>접수방법 1) </th>
+                                                                        <td>전환신청한 상품권을 아래주소로 송부 *우체국 유가증권등기 접수*
+                                                                            <br />
+                                                                            주소 : 서울특별시 강남구 테헤란로 231 센터필드 EAST 21층
+                                                                            SSG.COM 상품권전환금 담당자
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>접수방법 2) </th>
+                                                                        <td>전국 신세계백화점 또는 이마트 상품권샵으로 상품권 실물을 지참 후 방문(본인
+                                                                            확인을 위해 신분증 지참 필수)</td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </li>
+                                                        <li class="mgt10"><span class="strong">-신세계 인터넷 면세점</span> :
+                                                            홈페이지 또는 앱(APP)접속하여 [신세계상품권(지류)전환금]신청 후 아래 방법을 통해 접수
+                                                            <table>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th>접수방법 )</th>
+                                                                        <td>전환신청한 상품권을 아래주소로 송부 *우체국 유가증권등기 접수*
+                                                                            <br />
+                                                                            주소 : (04530) 서울 중구 퇴계로 77, 18층(충무로1가 54) 온라인
+                                                                            지류상품권 담당자 앞
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </li>
+                                                    </ul>
+                                                    <p class="etc">* 자세한 안내는 각 홈페이지를 참조하시기 바랍니다.</p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="sub_title">• 상품권 이용 시 주의사항</div>
+                                                    <ul>
+                                                        <li>- 제휴 사용처별 일부 매장 및 공연은 사용이 제한될 수 있습니다.</li>
+                                                        <li>- 신세계상품권은 권면금액의 100분의 60 이상을 사용하신 경우 현금 잔액을 돌려받으실 수 있습니다.
+                                                            (1만원권 이하는 100분의 80이상)</li>
+                                                        <li>- 구입 후 환불을 원하시는 경우에는 영수증을 반드시 지참하셔야만 환불이 가능합니다.</li>
+                                                        <li>- 신세계상품권은 바겐세일과 같은 가격 할인 기간을 포함하여 언제든지 사용하실 수 있습니다.
+                                                            <br />&nbsp;&nbsp;단, 타사상품권(도서상품권, 스타벅스 상품권 등)의 구입, 순금 구입, 카드
+                                                            사용대금 납부 등에는 사용하실 수 없습니다.
+                                                        </li>
+                                                        <li>- 상품권이 훼손되었을 경우에는 즉시 교환해드립니다.
+                                                            <br />&nbsp;단, 상품권의 권면금액 및 발행번호 등을 파악할 수 없고, 당사 발행의 상품권임을
+                                                            확인할 수 없는 경우에는 교환해드리지 않습니다.
+                                                        </li>
+                                                        <li>- 상품권을 도난 및 분실한 경우 재발행하지 않으며 일체 책임을 지지 않습니다.</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="swiper-pagination"></div>
+                                    <div class="tab_contents" data-tab-title="food">
+                                        <div class="info">
+                                            <div class="tab_title">외식</div>
+                                            <p>신세계상품권은 <span class="spot"> 백화점 전점, 이마트 등 다양한 곳에서 식사</span>하실 때 사용하실
+                                                수
+                                                있습니다.</p>
+                                        </div>
+                                        <ul class="brand_list">
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_roastok.png"
+                                                        alt="로스옥 대표 이미지">
+                                                </div>
+                                                <div class="name">로스옥</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_butcherscut.png"
+                                                        alt="붓처스컷 대표 이미지">
+                                                </div>
+                                                <div class="name">붓처스컷</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_samwongarden.png"
+                                                        alt="삼원가든 대표 이미지">
+                                                </div>
+                                                <div class="name">삼원가든</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_sunthebud.png"
+                                                        alt="썬더버드 대표 이미지">
+                                                </div>
+                                                <div class="name">썬더버드</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_osteriacotto.png"
+                                                        alt="오스테리아꼬또 대표 이미지">
+                                                </div>
+                                                <div class="name">오스테리아꼬또</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_twoppul.png"
+                                                        alt="투뿔등심 대표 이미지">
+                                                </div>
+                                                <div class="name">투뿔등심</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_starbucks.png"
+                                                        alt="스타벅스 대표 이미지">
+                                                </div>
+                                                <div class="name">스타벅스<span class="etc">(일부 매장 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_famillestation.png"
+                                                        alt="파미에스테이션 대표 이미지">
+                                                </div>
+                                                <div class="name">파미에스테이션</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_vecchianuovo.png"
+                                                        alt="베키아에누보 대표 이미지">
+                                                </div>
+                                                <div class="name">베키아에누보</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_devilsdoor.png"
+                                                        alt="데블스도어 대표 이미지">
+                                                </div>
+                                                <div class="name">데블스도어<span class="etc">(여의도 IFC점 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_bonobono.png"
+                                                        alt="보노보노 대표 이미지">
+                                                </div>
+                                                <div class="name">보노보노</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_oslo.png"
+                                                        alt="오슬로 대표 이미지">
+                                                </div>
+                                                <div class="name">오슬로</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_smoothieking.png"
+                                                        alt="스무디킹 대표 이미지">
+                                                </div>
+                                                <div class="name">스무디킹</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_vips.png" alt="빕스 대표 이미지">
+                                                </div>
+                                                <div class="name">빕스</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_outback.png"
+                                                        alt="아웃백 스테이크하우스 대표 이미지">
+                                                </div>
+                                                <div class="name">아웃백 스테이크하우스</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_madforgarlic.png"
+                                                        alt="매드포갈릭 대표 이미지">
+                                                </div>
+                                                <div class="name">매드포갈릭<span class="etc">(일부 매장 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_pizzahut.png"
+                                                        alt="피자헛 대표 이미지">
+                                                </div>
+                                                <div class="name">피자헛</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_bibigo.png"
+                                                        alt="비비고 대표 이미지">
+                                                </div>
+                                                <div class="name">비비고<span class="etc">(인천공항점 제외)</span></div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_theplace.png"
+                                                        alt="더플레이스 대표 이미지">
+                                                </div>
+                                                <div class="name">더플레이스</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_ourhome.png"
+                                                        alt="아워홈 대표 이미지">
+                                                </div>
+                                                <div class="name">아워홈</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_eat_sevit.png"
+                                                        alt="OLA, 채빛 퀴진 대표 이미지">
+                                                </div>
+                                                <div class="name">이솔라, 채빛 퀴진, 카페 돌체<span class="etc">(ONLY 세빛섬)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_marketo.png"
+                                                        alt="마켓오">
+                                                </div>
+                                                <div class="name">마켓오</div>
+                                            </li>
+
+                                        </ul>
+                                        <div class="notice">
+                                            <div class="title">유의사항</div>
+                                            <div class="inner">
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>- 제휴 사용처별 일부 매장 및 공연은 사용이 제한될 수 있습니다.</li>
+                                                        <li>- 신세계상품권은 권면금액의 100분의 60 이상을 사용하신 경우 현금 잔액을 돌려받으실 수 있습니다.
+                                                            (1만원권 이하는 100분의 80이상)</li>
+                                                        <li>- 구입 후 환불을 원하시는 경우에는 영수증을 반드시 지참하셔야만 환불이 가능합니다.</li>
+                                                        <li>- 신세계상품권은 바겐세일과 같은 가격 할인 기간을 포함하여 언제든지 사용하실 수 있습니다.
+                                                            <br />&nbsp;&nbsp;단, 타사상품권(도서상품권, 스타벅스 상품권 등)의 구입, 순금 구입, 카드
+                                                            사용대금 납부 등에는 사용하실 수 없습니다.
+                                                        </li>
+                                                        <li>- 상품권이 훼손되었을 경우에는 즉시 교환해드립니다.
+                                                            <br />&nbsp;단, 상품권의 권면금액 및 발행번호 등을 파악할 수 없고, 당사 발행의 상품권임을
+                                                            확인할 수 없는 경우에는 교환해드리지 않습니다.
+                                                        </li>
+                                                        <li>- 상품권을 도난 및 분실한 경우 재발행하지 않으며 일체 책임을 지지 않습니다.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab_contents" data-tab-title="hotel">
+                                        <div class="info">
+                                            <div class="tab_title">호텔</div>
+                                            <p>신세계상품권은 <span class="spot">다양한 곳에서 숙박</span>하실 때 사용하실 수
+                                                있습니다.</p>
+                                        </div>
+                                        <ul class="brand_list">
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_jw_marriott_jeju.png"
+                                                        alt="JW 메리어트 호텔 서울 대표 이미지">
+                                                </div>
+                                                <div class="name">JW 메리어트 제주 리조트&amp;스파</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_coral_by_josun.png"
+                                                        alt="JW 메리어트 호텔 서울 대표 이미지">
+                                                </div>
+                                                <div class="name">코랄로 바이 조선</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_jw_marriott.png"
+                                                        alt="JW 메리어트 호텔 서울 대표 이미지">
+                                                </div>
+                                                <div class="name">JW 메리어트 호텔 서울</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_westin.png"
+                                                        alt="웨스틴 조선호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">웨스틴 조선<span class="etc">(서울,부산)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_grandjosun.png"
+                                                        alt="그랜드 조선(부산,제주) 대표 이미지">
+                                                </div>
+                                                <div class="name">그랜드 조선<span class="etc">(부산,제주)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_shopping_josun.png"
+                                                        alt="조선호텔앤리조트 대표 이미지">
+                                                </div>
+                                                <div class="name">조선팰리스 서울 강남,<br>럭셔리 컬렉션 호텔</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_gravity.png"
+                                                        alt="조선호텔앤리조트 대표 이미지">
+                                                </div>
+                                                <div class="name">그래비티 서울 판교,<br>오토그래프 컬렉션</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_lescape.png"
+                                                        alt="레스케이프 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">레스케이프</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_fourpoints.png"
+                                                        alt="포포인츠 대표 이미지">
+                                                </div>
+                                                <div class="name">포포인츠 바이 쉐라톤 조선<span class="etc">(서울역, 서울 명동)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_shinsegae.png"
+                                                        alt="신세계 영랑호 리조트 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계 영랑호 리조트</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_jw_marriott_dongdaemun.png"
+                                                        alt="JW 메리어트 대표 이미지">
+                                                </div>
+                                                <div class="name">JW 메리어트동대문 스퀘어 서울</div>
+                                            </li>
+
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_courtyard.png"
+                                                        alt="코트야드 메리어트 대표 이미지">
+                                                </div>
+                                                <div class="name">코트야드 메리어트 타임스퀘어</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_courtyard_marriott.png"
+                                                        alt="코트야드 메리어트 대표 이미지">
+                                                </div>
+                                                <div class="name">코트야드 메리어트 판교</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_mea_marriott.png"
+                                                        alt="MEA 메리어트 대표 이미지">
+                                                </div>
+                                                <div class="name">MEA 메리어트 여의도 파크센터</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_marriott.png"
+                                                        alt="대구 메리어트 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">대구 메리어트 호텔<span class="etc">(연회장, 수영장, 사우나 사용
+                                                        제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_onoma.png"
+                                                        alt="호텔 오노마 대전, 오토그래프 컬렉션">
+                                                </div>
+                                                <div class="name">호텔 오노마 대전,<br>오토그래프 컬렉션</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_paradise.png"
+                                                        alt="파라다이스 호텔 부산 대표 이미지">
+                                                </div>
+                                                <div class="name">파라다이스 호텔<span class="etc">(부산,도고)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_paradiseCity.png"
+                                                        alt="파라다이스 시티 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">파라다이스 시티 호텔<span class="etc">(연회장, 크로마, 플라자, 카지노 사용
+                                                        제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_phoenix.png"
+                                                        alt="휘닉스 제주 대표 이미지">
+                                                </div>
+                                                <div class="name">휘닉스 제주</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_centum.png"
+                                                        alt="해운대 센텀 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">해운대 센텀 호텔</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_swissgrand.png"
+                                                        alt="그랜드 힐튼 서울 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">스위스 그랜드 서울 호텔<span class="etc">(연회장 사용 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_sofitel.png"
+                                                        alt="그랜드 힐튼 서울 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">소피텔 앰배서더 서울<span class="etc">(호텔 SPA 사용 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_pullman.png"
+                                                        alt="그랜드 힐튼 서울 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">앰배서더 서울 풀만<span class="etc">(연회장, 웰니스센터 및 멤버십 사용
+                                                        제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_mercure.png"
+                                                        alt="그랜드 힐튼 서울 호텔 대표 이미지">
+                                                </div>
+                                                <div class="name">머큐어 앰배서더 홍대<span class="etc">(연회장, 식음 업장 사용 제외)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_hotel_wyndham.png"
+                                                        alt="원덤그랜드부산 대표 이미지">
+                                                </div>
+                                                <div class="name">원덤그랜드부산<span class="etc">(룸서비스, 연회장, 웰니스 사용 제외)</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="notice">
+                                            <div class="title">유의사항</div>
+                                            <div class="inner">
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>- 제휴 사용처별 일부 매장 및 공연은 사용이 제한될 수 있습니다.</li>
+                                                        <li>- 신세계상품권은 권면금액의 100분의 60 이상을 사용하신 경우 현금 잔액을 돌려받으실 수 있습니다.
+                                                            (1만원권 이하는 100분의 80이상)</li>
+                                                        <li>- 구입 후 환불을 원하시는 경우에는 영수증을 반드시 지참하셔야만 환불이 가능합니다.</li>
+                                                        <li>- 신세계상품권은 바겐세일과 같은 가격 할인 기간을 포함하여 언제든지 사용하실 수 있습니다.
+                                                            <br />&nbsp;&nbsp;단, 타사상품권(도서상품권, 스타벅스 상품권 등)의 구입, 순금 구입, 카드
+                                                            사용대금 납부 등에는 사용하실 수 없습니다.
+                                                        </li>
+                                                        <li>- 상품권이 훼손되었을 경우에는 즉시 교환해드립니다.
+                                                            <br />&nbsp;단, 상품권의 권면금액 및 발행번호 등을 파악할 수 없고, 당사 발행의 상품권임을
+                                                            확인할 수 없는 경우에는 교환해드리지 않습니다.
+                                                        </li>
+                                                        <li>- 상품권을 도난 및 분실한 경우 재발행하지 않으며 일체 책임을 지지 않습니다.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab_contents" data-tab-title="play">
+                                        <div class="info">
+                                            <div class="tab_title">레저/문화</div>
+                                            <p>신세계상품권은 <span class="spot">다양한 곳에서 문화 생활을 즐기실 때</span> 사용하실 수
+                                                있습니다.</p>
+                                        </div>
+                                        <ul class="brand_list">
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_jayu.png"
+                                                        alt="자유 CC 대표 이미지">
+                                                </div>
+                                                <div class="name">자유 CC</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_ipo.png"
+                                                        alt="이포 CC 대표 이미지">
+                                                </div>
+                                                <div class="name">이포 CC</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_spaland.png"
+                                                        alt="신세계 센텀시티 스파랜드 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계 센텀시티 스파랜드</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_icerink.png"
+                                                        alt="신세계 센텀시티 아이스링크 대표 이미지">
+                                                </div>
+                                                <div class="name">신세계 센텀시티 아이스링크</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_cgv.png"
+                                                        alt="CGV 대표 이미지">
+                                                </div>
+                                                <div class="name">CGV<span class="etc">(광주터미널, 대전터미널, 센텀시티, 스타필드시티
+                                                        위례, 영등포, 의정부, 죽전)</span></div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_megabox.png"
+                                                        alt="메가박스 센트럴 대표 이미지">
+                                                </div>
+                                                <div class="name">메가박스<span class="etc">(고양스타필드, 부천스타필드시티, 센트럴, 안성스타필드,
+                                                        하남스타필드, 코엑스)</span>
+                                                </div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_yp.png"
+                                                        alt="영풍문고 대표 이미지">
+                                                </div>
+                                                <div class="name">영풍문고</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_kyobo.png"
+                                                        alt="교보문고 대표 이미지">
+                                                </div>
+                                                <div class="name">교보문고</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_oakvalley.png"
+                                                        alt="한솔 오크밸리 대표 이미지">
+                                                </div>
+                                                <div class="name">한솔 오크밸리</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_leisure_vspa.png"
+                                                        alt="한솔 오크밸리 대표 이미지">
+                                                </div>
+                                                <div class="name">브이스파 조선호텔점</div>
+                                            </li>
+
+                                        </ul>
+                                        <div class="notice">
+                                            <div class="title">유의사항</div>
+                                            <div class="inner">
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>- 제휴 사용처별 일부 매장 및 공연은 사용이 제한될 수 있습니다.</li>
+                                                        <li>- 신세계상품권은 권면금액의 100분의 60 이상을 사용하신 경우 현금 잔액을 돌려받으실 수 있습니다.
+                                                            (1만원권 이하는 100분의 80이상)</li>
+                                                        <li>- 구입 후 환불을 원하시는 경우에는 영수증을 반드시 지참하셔야만 환불이 가능합니다.</li>
+                                                        <li>- 신세계상품권은 바겐세일과 같은 가격 할인 기간을 포함하여 언제든지 사용하실 수 있습니다.
+                                                            <br />&nbsp;&nbsp;단, 타사상품권(도서상품권, 스타벅스 상품권 등)의 구입, 순금 구입, 카드
+                                                            사용대금 납부 등에는 사용하실 수 없습니다.
+                                                        </li>
+                                                        <li>- 상품권이 훼손되었을 경우에는 즉시 교환해드립니다.
+                                                            <br />&nbsp;단, 상품권의 권면금액 및 발행번호 등을 파악할 수 없고, 당사 발행의 상품권임을
+                                                            확인할 수 없는 경우에는 교환해드리지 않습니다.
+                                                        </li>
+                                                        <li>- 상품권을 도난 및 분실한 경우 재발행하지 않으며 일체 책임을 지지 않습니다.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab_contents" data-tab-title="health">
+                                        <div class="info">
+                                            <div class="tab_title">건강검진</div>
+                                            <p>신세계상품권은 <span class="spot">백다양한 곳에서 건강 검진</span>을 받으실 때 사용하실 수
+                                                있습니다.</p>
+                                        </div>
+                                        <ul class="brand_list">
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_cha.png"
+                                                        alt="분당 차병원 대표 이미지">
+                                                </div>
+                                                <div class="name">분당 차병원(건강검진센터)
+                                                </div>
+                                            </li>
+                                            <!-- <li id="remove"> -->
+                                            <!-- <img src="../dist/images/content/logo_health_cmc.png" alt="서울성모병원 대표 이미지"> -->
+                                            <!-- <div class="desc"> -->
+                                            <!-- <p class="kr_g_600">서울성모병원<br> -->
+                                            <!-- (건강검진센터)</p> -->
+                                            <!-- </div> -->
+                                            <!-- </li> -->
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_gachon.png"
+                                                        alt="가천의대길병원 대표 이미지">
+                                                </div>
+                                                <div class="name">가천의대길병원(건강검진센터)</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_emc_uni.png"
+                                                        alt="을지대학병원 대표 이미지">
+                                                </div>
+                                                <div class="name">을지대학병원(대전, 건강검진센터)</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_emc.png"
+                                                        alt="을지병원 대표 이미지">
+                                                </div>
+                                                <div class="name">을지병원(서울, 건강검진센터)</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_emc_gangnam.png"
+                                                        alt="강남을지병원 대표 이미지">
+                                                </div>
+                                                <div class="name">강남을지병원(건강검진센터)</div>
+                                            </li>
+                                            <li class="brand">
+                                                <div class="img_wrap">
+                                                    <img src="../dist/images/content/logo_health_cmc_uijeongbu.png"
+                                                        alt="의정부 성모병원 대표 이미지">
+                                                </div>
+                                                <div class="name">의정부 성모병원(건강검진센터)</div>
+                                            </li>
+                                        </ul>
+                                        <div class="notice">
+                                            <div class="title">유의사항</div>
+                                            <div class="inner">
+                                                <div class="row">
+                                                    <ul>
+                                                        <li>- 제휴 사용처별 일부 매장 및 공연은 사용이 제한될 수 있습니다.</li>
+                                                        <li>- 신세계상품권은 권면금액의 100분의 60 이상을 사용하신 경우 현금 잔액을 돌려받으실 수 있습니다.
+                                                            (1만원권 이하는 100분의 80이상)</li>
+                                                        <li>- 구입 후 환불을 원하시는 경우에는 영수증을 반드시 지참하셔야만 환불이 가능합니다.</li>
+                                                        <li>- 신세계상품권은 바겐세일과 같은 가격 할인 기간을 포함하여 언제든지 사용하실 수 있습니다.
+                                                            <br />&nbsp;&nbsp;단, 타사상품권(도서상품권, 스타벅스 상품권 등)의 구입, 순금 구입, 카드
+                                                            사용대금 납부 등에는 사용하실 수 없습니다.
+                                                        </li>
+                                                        <li>- 상품권이 훼손되었을 경우에는 즉시 교환해드립니다.
+                                                            <br />&nbsp;단, 상품권의 권면금액 및 발행번호 등을 파악할 수 없고, 당사 발행의 상품권임을
+                                                            확인할 수 없는 경우에는 교환해드리지 않습니다.
+                                                        </li>
+                                                        <li>- 상품권을 도난 및 분실한 경우 재발행하지 않으며 일체 책임을 지지 않습니다.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <script>
-                                var swiperGiftCardList = new Swiper('.about_us .gift_card .swiper', {
-                                    slidesPerView: 'auto',
-                                    spaceBetween: 0,
-                                    touchRatio: 0,//드래그 금지
-                                    observer: true,
-                                    observeParents: true,
-                                    breakpoints: {
-                                        1024: {
-                                            slidesPerView: "auto",
-                                            spaceBetween: 16,
-                                            touchRatio: 1,
-                                        }
-                                    },
-                                    pagination: {
-                                        el: ".about_us .gift_card .swiper-pagination",
-                                        clickable: true,
-                                    },
-                                });
-                            </script>
 
-
+                            <!-- 
                             <div class="btn_wrap">
-                                <a href="https://www.shinsegae.com/service/membership/certificate.do" target="_blank" class="btn_detail">상품권 이용안내</a>
-                            </div>
+                                <a href="https://www.shinsegae.com/service/membership/certificate.do" target="_blank"
+                                    class="btn_detail">상품권 이용안내</a>
+                            </div> -->
 
                         </div>
                     </div>
@@ -419,7 +1421,7 @@
                                 <div class="swiper">
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
-                                       <div class="swiper-slide">
+                                        <div class="swiper-slide">
                                             <img class="img_pc" src="../dist/images/content/gift_pd11_white.jpg"
                                                 alt="" />
                                         </div>
@@ -606,7 +1608,7 @@
                         <div class="top">
                             <span class="type">유니폼</span>
                             <div class="title">성공하는 기업은
-                                <br/>패션도 전략입니다.
+                                <br />패션도 전략입니다.
                             </div>
                             <p>30년 이상 축적된 인체공학적 데이터와 전문가의 노하우를 가진 신세계 법인영업 유니폼 팀입니다.<br />
                                 앞선 패션과 품질로 기업의 목표 달성과 브랜드 가치를 높이는 유니폼을 제안해 드립니다.</p>
@@ -688,6 +1690,15 @@
                                                 nextEl: ".about_us .uniform .inner01 .swiper-button-next",
                                                 prevEl: ".about_us .uniform .inner01 .swiper-button-prev",
                                             },
+                                            effect: "coverflow",
+                                            spaceBetween: 10,
+                                            coverflowEffect: {
+                                                rotate: 0,
+                                                stretch: 0, // 슬라이더간 거리(픽셀) : 클수록 슬라이더가 서로 많이 겹침
+                                                depth: 0,
+                                                modifier: 3,
+                                                slideShadows: false
+                                            },
 
                                         });
 
@@ -767,7 +1778,7 @@
                                 <div class="title">법인영업 유니폼 문의</div>
                                 <p>궁금한 사항이 있으시다면 언제든지 문의해 주세요.<br />담당자가 신속하게 답변 드리겠습니다.</p>
                             </div>
-                            <div class="number">02-3406-6968</div>
+                            <a href="tel:02-3406-6968" class="number">02-3406-6968</a>
                         </div>
                     </div>
                 </div>
@@ -814,6 +1825,24 @@
                 } else if (index === 1) { // 사업카테고리
                     $('#cate02').show();
                 }
+
+            });
+
+
+            $('.about_us .tab_contents').hide();
+            $('.about_us .tab_contents[data-tab-title="shopping"]').show();
+
+            $('.about_us .tab_list a').click(function () {
+                var $this = $(this);
+                var tabName = $this.data('tab-name');
+
+                $('.about_us .tab_list a').removeClass('on');
+                $this.addClass('on');
+
+                $('.about_us .tab_contents').hide();
+
+                $('.about_us .tab_contents[data-tab-title="' + tabName + '"]').show();
+
 
             });
 

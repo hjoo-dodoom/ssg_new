@@ -1,5 +1,4 @@
-#layout{min-height:100vh;display: flex;flex-direction: column;position: relative;background-color: #fff;}
-
+#layout{ min-height:100vh;display: flex;flex-direction: column;position: relative;background-color: #fff;}
 #hd_belt{width:100%; display:none; padding: 0.9rem; text-align:center; color:#fff; background-color:#555;}
 #hd_belt.fixed{position:fixed; top:0; left:0;}
 /* IE10+ */
@@ -65,7 +64,7 @@
 #header.open .sitemap{display:flex; justify-content: space-between;width: 100%; max-width: 128rem; margin: 0 auto;}
 #header.open  #hd_links{flex:1; flex-direction: column;align-items: flex-start;}
 #header.open  #hd_links .item{position:relative; color:#989898;  font-weight: 700;}
-#header.open  #hd_links .item.active{color:#FFFFFF;}
+#header.open  #hd_links .item:hover{color:#FFFFFF;}
 #header.open  #hd_links .item a{padding: 1rem 0;font-size: 5rem;}
 #header.open  #hd_links .item + .item{margin-top: 4rem; margin-left: 0;}
 #header.open .btn_hamburget_close{display: block;opacity: 1;}
@@ -84,6 +83,10 @@
 @media screen and (max-width: 1820px) {
     #hd_links .item + .item{margin-left:5rem;}
     #header .hd_sites .item{display:none;}
+}
+
+@media screen and (max-width: 1400px){
+    #header .hd_info .inner{width:70%;}
 }
 
 @media screen and (max-width: 1020px){

@@ -4,6 +4,9 @@ function displayMenu() {
     var html = document.documentElement;
     var body = document.body;
 
+
+
+
     if (header.classList.contains('open')) {
         header.classList.remove('open');
 
@@ -29,10 +32,10 @@ function displayToTop() {
 
     if (!btnToTop || !footer) return;
 
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop; // 현재 스크롤 위치
-    var viewportHeight = window.innerHeight || document.documentElement.clientHeight; // 화면 높이
-    var scrollBottom = scrollTop + viewportHeight;// 스크롤된 화면 하단 위치
-    var footerTop = getOffsetTop(footer);// 푸터의 문서 상단 기준 위치
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    var scrollBottom = scrollTop + viewportHeight;
+    var footerTop = getOffsetTop(footer);
 
     var offset = (window.innerWidth || document.documentElement.clientWidth) <= 850 ? 20 : 0;
 
@@ -53,9 +56,35 @@ function getOffsetTop(elem) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
     document.addEventListener('scroll', displayToTop);
     window.addEventListener('resize', displayToTop);
     displayToTop();
+
+    var isIE = !!window.document.documentMode;
+
+    if (isIE) {
+        // IE에서는 Lenis를 사용하지 않음
+        return;
+    }
+
+    // 부드러운 페이지 스크롤
+    var lenis = new Lenis({
+        duration: 1,
+        easing: function (t) {
+            return Math.min(1, 1.001 - Math.pow(2, -10 * t)); // 부드러운 감속
+        },
+        smooth: true,
+        direction: 'vertical',
+        gestureDirection: 'vertical'
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
 });
 
 
@@ -136,11 +165,11 @@ document.addEventListener('DOMContentLoaded', function () {
         current = ease(current, target, 0.1);
 
         if(bg){
-            bg.style.transform = 'translate3d(0px,' + (target * 0.5) + 'px, 0px)';
+            bg.style.transform = 'translate3d(0px,' + (target * 0.5) + 'px, 0px) scale(1.25)';
         }
 
         if (visualText) {
-            visualText.style.transform = 'translateY(' + (current * 0.6) + 'px)';
+            visualText.style.transform = 'translate3d(0px,' + Math.round(current * 0.4) + 'px, 0px)';
         }
 
         if (Math.abs(current - target) < 0.5) {
@@ -151,17 +180,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleScroll() {
-        target = (window.scrollY || document.documentElement.scrollTop) * 0.9 ;
-        // target = (window.scrollY || document.documentElement.scrollTop) * 1.2;
+        target = (window.scrollY || document.documentElement.scrollTop) * 0.9; // 원하는 비율로 조정
 
         if (!isTicking) {
             isTicking = true;
             requestAnimationFrame(render);
         }
     }
-
     window.addEventListener('scroll', handleScroll);
 });
+
 
 
 //경고창
@@ -818,20 +846,16 @@ function gnbMobileOpen() {
 
 //상단으로 이동
 function toTop() {
-    var startPosition = window.pageYOffset;
-    var duration = 800;
-    var startTime = performance.now();
-    function scrollStep(currentTime) {
-        var timeElapsed = currentTime - startTime;
-        var progress = Math.min(timeElapsed / duration, 1);
-        var easeOutProgress = 1 - Math.pow(1 - progress, 3);
-        var newY = startPosition * (1 - easeOutProgress);
-        window.scrollTo(0, newY);
-        if (timeElapsed < duration) {
-            requestAnimationFrame(scrollStep);
+    var scrollY = window.pageYOffset;
+    var interval = setInterval(function () {
+        var step = Math.max(scrollY * 0.1, 10); // 점점 줄어듬
+        scrollY -= step;
+        window.scrollTo(0, scrollY);
+
+        if (scrollY <= 0) {
+            clearInterval(interval);
         }
-    }
-    requestAnimationFrame(scrollStep);
+    }, 16); // 약 60fps
 }
 
 //location event

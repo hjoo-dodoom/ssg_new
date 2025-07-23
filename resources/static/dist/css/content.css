@@ -937,6 +937,58 @@
     .file_upload .file_item  .file_name{margin-left:0; margin-top:1rem;}
 }
 
+.partner_notice{margin-top: 14rem; padding-top: 5rem; border-top:2px solid #000;}
+.partner_notice .pn_title{color: #000; font-size: 2.6rem; font-weight: 600;}
+.partner_notice .pn_text{margin-top:1.2rem; color: #000; font-size: 1.6rem;font-weight: 400; line-height:1.6;}
+.partner_notice .pn_process{margin-top:6rem; display: flex;text-align: center;justify-content: center;}
+.partner_notice .group{display: flex;flex-wrap: wrap;flex: 1; align-content: flex-start;}
+.partner_notice .group + .group{margin-left:7.6rem;}
+.partner_notice .item{flex:1; min-width: 100px; position: relative; color:#000;}
+.partner_notice .item + .item{margin-left:7.6rem;}
+.partner_notice .status{height:4rem; margin-bottom:3.6rem;padding-bottom:1.4rem;width: 100%;border-bottom:1.5px solid currentColor;position: relative;}
+.partner_notice .status:before,
+.partner_notice .status:after{content:"";width:1px;height:1.2rem;position: absolute;bottom:-0.6rem;background-color: currentColor;}
+.partner_notice .status:before{left:0;}
+.partner_notice .status:after{right:0;}
+.partner_notice .status > div{}
+.partner_notice .status > div strong{color: inherit;display: block;font-size:1.6rem;font-weight: 600;}
+.partner_notice .item .tit{position:relative;display: block;padding-top: 100%;background-color: #F8F8F8;border-radius: 50%;align-items: center;justify-content: center;}
+.partner_notice .item .tit:before{content:""; display: inline-block; position: absolute; top: 50%; left: 50%; width: 90%; height: 90%; transform: translate(-50%, -50%); background-color: #F0F0F0;border-radius: 100%;}
+.partner_notice .item .tit:after{content:"";position: absolute;right:-4.8rem;top:50%;margin-top:-1rem;width:2rem;height: 2rem;background-position: center center; background-repeat: no-repeat;background-image: url('../images/common/icon_status_arrow.svg');}
+.partner_notice .group:last-child .item:nth-child(3) .tit:after{display: none;}
+.partner_notice .item .tit div{position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);width: 100%;}
+.partner_notice .item .tit svg{margin-bottom:0.8rem;}
+.partner_notice .item .tit span{display: block;font-size:1.5rem;font-weight:500;}
+.partner_notice .cnt{width:100%; font-size:1.4rem;margin-top:2.2rem;word-break: keep-all;}
+.partner_notice .group > .cnt{margin-top:0;}
+
+@media screen and (max-width: 1640px){
+    .partner_notice .group + .group{margin-left:5rem;}
+    .partner_notice .item + .item{margin-left:5rem;}
+    .partner_notice .item .tit:after{right:-3.5rem;}
+}
+
+@media screen and (max-width: 1240px) {
+    .partner_notice{margin-top: 8rem; padding-top: 3rem;}
+    .partner_notice .pn_title{font-size: 2.4rem;}
+    .partner_notice .pn_text{margin-top:1rem; font-size: 1.4rem; line-height:1.6;}
+    .partner_notice .pn_process{flex-wrap:wrap;margin-top: 0rem;}
+    .partner_notice .group{width:100%;gap:0rem;flex:1 1 auto;}
+    .partner_notice .group + .group{margin-left:0;}
+    .partner_notice .item{flex:1 1 auto; width:50%;}
+    .partner_notice .item + .item{margin-left:0;}
+    .partner_notice .status{margin-top:3rem; margin-bottom:2rem;}
+    .partner_notice .status > div strong{font-size:1.4rem;}
+    .partner_notice .status > div span{font-size: 1.3rem;}
+    .partner_notice .item .tit{margin:0 auto;width:12rem;height:12rem;padding:0;}
+    .partner_notice .item .tit:after{display: none;}
+    .partner_notice .item:after{content:"";position: absolute;right:-1rem;top:6rem;margin-top:-1rem;width:2rem;height: 2rem;background-position: center center; background-repeat: no-repeat;background-image: url('../images/common/icon_status_arrow.svg');}
+    .partner_notice .group:last-child .item:nth-child(3):after{display: none;}
+    .partner_notice .item .tit svg{margin-bottom:0.6rem;}
+    .partner_notice .item .tit span{font-size:1.3rem;}
+    .partner_notice .item .cnt{font-size:1.3rem;margin-top:1.2rem;padding:0 1rem;}
+}
+
 
 .location_wrap .map_visual{position: relative; width: 100%; padding-top: 43.75%; border-radius:2rem; overflow:hidden; background-position: center;background-repeat: no-repeat; background-size: cover;background-image: url('../../dist/images/content/map_visual.jpg');}
 .location_wrap .location_content{width:100%; margin-top:6rem;}

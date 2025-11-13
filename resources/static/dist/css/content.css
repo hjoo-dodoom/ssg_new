@@ -96,12 +96,12 @@
 .gift_card .text_wrap p{width:80%;}
 .gift_card .swiper{margin-top:7.3rem; padding-bottom:3rem; overflow:hidden;}
 .gift_card .swiper-slide{position:relative; padding:4.4rem 4rem 3.4rem; border-radius: 2rem; }
-.gift_card .swiper-slide:nth-child(1){background: linear-gradient(180deg, #F3EDE4 0%, #FFFFFF 100%);}
-.gift_card .swiper-slide:nth-child(2){background: linear-gradient(180deg, #E8F2E5 0%, #FFFFFF 100%);}
-.gift_card .swiper-slide:nth-child(3){background: linear-gradient(180deg, #EAEDF6 0%, #FFFFFF 100%);}
-.gift_card .swiper-slide:nth-child(4){background: linear-gradient(180deg, #F0DDD2 0%, #FFFFFF 100%);}
-.gift_card .swiper-slide:nth-child(5){background: linear-gradient(180deg, #E8E1F0 0%, #FFFFFF 100%);}
-.gift_card .swiper-slide:nth-child(6){background: linear-gradient(180deg, #EDE7C9 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.cheon5{background: linear-gradient(180deg, #F3EDE4 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.man1{background: linear-gradient(180deg, #E8F2E5 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.man5{background: linear-gradient(180deg, #EAEDF6 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.man10{background: linear-gradient(180deg, #F0DDD2 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.man30{background: linear-gradient(180deg, #E8E1F0 0%, #FFFFFF 100%);}
+.gift_card .swiper-slide.man50{background: linear-gradient(180deg, #EDE7C9 0%, #FFFFFF 100%);}
 .gift_card .swiper-slide:after{content:''; width:1.2rem; height:11.2rem; position:absolute; top:5rem; right:4rem; background-repeat: no-repeat; background-position: top; background-size: contain; background-image:url('../../dist/images/content/logo_gift_ssg.png');}
 .gift_card .swiper-slide .title{margin-bottom:13.6rem; font-size:2.4rem; font-weight:600; line-height:1.55;}
 .gift_card .swiper-slide .img_wrap{text-align:center;}

@@ -1591,7 +1591,7 @@
                         </div>
                         <div class="contents">
                             <div class="top_wrap gift_pd_slide_wrap">
-                                <div class="swiper">
+                                <div class="swiper" dir="ltr">
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
                                         <div class="swiper-slide">
@@ -1640,7 +1640,7 @@
 
                             </div>
                             <div class="bottom_wrap gift_pd_slide_wrap">
-                                <div class="swiper">
+                                <div class="swiper" dir="rtl">
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
                                         <div class="swiper-slide">
@@ -1697,6 +1697,7 @@
                                     spaceBetween: 40,
                                     observer: true,
                                     observeParents: true,
+                                    allowTouchMove: false,
                                     breakpoints: {
                                         1024: {
                                             spaceBetween: 16,
@@ -1716,6 +1717,7 @@
                                     spaceBetween: 40,
                                     observer: true,
                                     observeParents: true,
+                                    allowTouchMove: false,
                                     breakpoints: {
                                         1024: {
                                             spaceBetween: 16,
@@ -1723,8 +1725,7 @@
                                     },
                                     autoplay: {
                                         delay: 0,
-                                        disableOnInteraction: false,
-                                        reverseDirection: true // 오른쪽으로 이동
+                                        disableOnInteraction: false
                                     },
                                     speed: 2000,
                                 });

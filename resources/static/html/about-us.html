@@ -2085,6 +2085,11 @@
                 }
 
             });
+
+            if (window.location.search.indexOf('tab=cate02') > -1) {
+                // 사업카테고리 탭(2번째 탭) 강제 클릭
+                $('.about_us .category li:eq(1) a').trigger('click');
+            }
         });
 
     </script>

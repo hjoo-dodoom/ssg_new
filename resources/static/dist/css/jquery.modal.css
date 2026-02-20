@@ -81,7 +81,7 @@
 */	
 #modal-window .modal-box .modal-title {
     display: block;
-	font-size: 1.8rem;
+	font-size:2rem;
 	padding:30px 15px 15px;
 	line-height: 2.7rem;
 	text-align: center;
@@ -91,7 +91,7 @@
 }
 
 #modal-window .modal-box .modal-title h3 {
-   color: #222;font-size: 1.8rem;line-height: 2.7rem;font-weight: 800;
+   color: #222;font-size:2rem;line-height: 2.7rem;font-weight: 800;
 }
 /* Modal Close Button */
 #modal-window .modal-box .modal-title .modal-close-btn {
@@ -109,11 +109,11 @@
 
 */	
 #modal-window .modal-box .modal-text {
-    font-size: 14px;
+    font-size:16px;
     padding: 0 15px 30px;
     overflow-y: auto;
 	text-align: center;
-	font-size: 1.4rem;
+	font-size:1.6rem;
 	line-height: 2.0rem;
 	color: #222;
 	word-break: keep-all;
@@ -182,7 +182,7 @@
     text-align: center;
     height: 51px;
     vertical-align: middle;
-    font-size: 1.6rem;cursor:pointer;
+    font-size:1.8rem;cursor:pointer;
     color: #333
 }
 
@@ -209,12 +209,12 @@
 
 #modal-window .modal-box .modal-buttons a.modal-btn.btn-large {
     padding: 8px 14px;
-    font-size: 16px;
+    font-size:18px;
 }
 
 #modal-window .modal-box .modal-buttons a.modal-btn.btn-small {
     padding: 6px 8px;
-    font-size: 10px;
+    font-size:12px;
 }
 
 #modal-window .modal-box .modal-buttons a.modal-btn.btn-rounded {

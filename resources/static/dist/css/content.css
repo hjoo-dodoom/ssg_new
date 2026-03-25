@@ -137,7 +137,7 @@
 .main_section.mall{color:#fff; background-image: url('../../dist/images/content/bg_main02.jpg');}
 .main_section.mall .section_bottom{margin-top: 12%; margin-left:auto; width:50%;}
 .main_section.mall .section_bottom .text_wrap{font-size:2rem; font-weight:400; line-height:1.6;}
-.main_section.mall .btn_mall{height:6rem; margin-top:4rem; padding:.5rem 3rem; font-size:1.8rem; font-weight:600; border:none;background: #FFFFFF;border-radius: 20rem;}
+.main_section.mall .btn_mall{height:6rem; line-height: 5rem; margin-top:4rem; padding:.5rem 3rem; font-size:1.8rem; font-weight:600; border:none;background: #FFFFFF;border-radius: 20rem; color: #000;}
 .main_section.mall .btn_mall::after{content:''; position: relative; top: .5rem; margin-left:2.4rem; display:inline-block; width:2.2rem; height:2.2rem; background-position: center;background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_arrow_up_right.svg');transition: all 0.3s ease;}
 .main_section.mall .btn_mall:hover::after{ transform: translate(3px, -3px); opacity: .7;}
 
@@ -151,12 +151,12 @@
 
 
 .main_section.uniform .section_inner{display:flex; align-items: flex-start;}
-.main_section.uniform .section_top{position:sticky; top:6rem; flex-direction:column; align-self: flex-start;  margin-right: 8.5rem;}
+.main_section.uniform .section_top{position:sticky; width: 100%; top:6rem; flex-direction:column; align-self: flex-start;  margin-right: 5.5rem;}
 .main_section.uniform .section_top .title{flex:none;white-space: nowrap;}
 .main_section.uniform .section_top .text_wrap{flex:none;padding-top: 3rem; }
 .main_section.uniform .section_top .cs_info{margin-top:4rem; color:#000000;}
 .main_section.uniform .section_top .cs_info .sub{color:#8D8D8D}
-.main_section.uniform .section_bottom{margin-left:8.5rem; display:flex;flex-wrap: wrap;margin-top:-2.4rem;margin-left:-4rem;}
+.main_section.uniform .section_bottom{margin-left:8.5rem; display:flex; justify-content: end; flex-wrap: wrap;margin-top:-2.4rem;margin-left:-4rem;}
 
 .main_section.uniform .card {width: 100%; max-width:35rem; margin-left: 3rem; margin-right: 3rem;}
 .main_section.uniform .card:nth-child(1){}

@@ -13,12 +13,14 @@
     <link href="../../dist/css/content.css" rel="stylesheet" />
     <link href="../../dist/css/common.css" rel="stylesheet" />
     <link href="../../dist/css/swiper.min.css" rel="stylesheet" />
+    <link href="../../dist/css/aos.css" rel="stylesheet" />
 
     <!-- scripts -->
     <script src="../../dist/js/jquery-2.2.4.min.js"></script>
     <script src="../../dist/js/swiper.min.js"></script>
     <script src="../../dist/js/common.js"></script>
     <script src="../../dist/js/lenis.min.js"></script>
+    <script src="../../dist/js/aos.js"></script>
 
     <!-- icons -->
     <link rel="shortcut icon" href="../../dist/favicon.ico" type="image/x-icon">
@@ -54,9 +56,28 @@
 
         <div id="content" class="main">
             <div class="main_section main_visual">
-                <div class="bg"></div>
+                <div class="swiper main_visual_swiper" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="overflow: hidden;">
+                            <div class="bg" style="background-image: url('../../dist/images/content/bg_banner01.jpg');"></div>
+                        </div>
+                        <div class="swiper-slide" style="overflow: hidden;">
+                            <div class="bg" style="background-image: url('../../dist/images/content/bg_banner02.jpg');"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="section_inner">
                     <div class="txt_wrap">
+                        <div class="swiper_progress">
+                            <div class="progress_wrap">
+                                <div class="page_num current_num"></div>
+                                <div class="progress_bar"><div class="fill"></div></div>
+                                <div class="page_num total_num"></div>
+                            </div>
+                            <button type="button" class="btn_toggle" id="btn_main_visual_toggle">
+                                <img src="../../dist/images/common/icon_pause.svg" alt="멈춤" />
+                            </button>
+                        </div>
                         <p>기업체 임직원을 위한<br />라이프스타일 솔루션</p>
                         <span>신세계 법인영업</span>
                     </div>
@@ -69,16 +90,73 @@
                     <span>SCROLL DOWN</span>
                 </div>
             </div>
+            <script>
+                function updateMainProgress(swiper) {
+                    var total = swiper.slides.length;
+                    if (swiper.params.loop) {
+                        var loopSlides = $(swiper.el).find('.swiper-slide:not(.swiper-slide-duplicate)');
+                        total = loopSlides.length;
+                    }
+                    var current = swiper.realIndex + 1;
+                    var fillWidth = (current / total) * 100;
+                    
+                    var formatCurrent = current < 10 ? '0' + current : current;
+                    var formatTotal = total < 10 ? '0' + total : total;
+                    
+                    $('.swiper_progress .current_num').text(formatCurrent);
+                    $('.swiper_progress .total_num').text(formatTotal);
+                    $('.swiper_progress .progress_bar .fill').css('width', fillWidth + '%');
+                }
+
+                var swiperMainVisual = new Swiper('.main_visual_swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    speed: 1000,
+                    on: {
+                        init: function () {
+                            updateMainProgress(this);
+                        },
+                        slideChange: function () {
+                            updateMainProgress(this);
+                        }
+                    }
+                });
+                
+                // 첫 로딩 시 자동재생 정지
+                swiperMainVisual.autoplay.stop();
+
+                // 텍스트 및 배경 애니메이션(약 3~4초)이 모두 종료된 후 자동재생 시작
+                setTimeout(function() {
+                    swiperMainVisual.autoplay.start();
+                    $('#btn_main_visual_toggle img').attr('src', '../../dist/images/common/icon_pause.svg').attr('alt', '멈춤');
+                }, 500);
+
+                $('#btn_main_visual_toggle').on('click', function() {
+                    var $img = $(this).find('img');
+                    var isRunning = swiperMainVisual.autoplay.running;
+                    
+                    if (isRunning) {
+                        swiperMainVisual.autoplay.stop();
+                        $img.attr('src', '../../dist/images/common/icon_break.svg').attr('alt', '재생');
+                    } else {
+                        swiperMainVisual.autoplay.start();
+                        $img.attr('src', '../../dist/images/common/icon_pause.svg').attr('alt', '멈춤');
+                    }
+                });
+            </script>
 
             <!-- 비즈니스 파트너 -->
             <div class="main_section company">
                 <div class="section_inner">
                     <div class="section_top">
-                        <div class="title">
+                        <div class="title" data-aos="fade-up">
                             <span class="sub">신세계 법인영업</span>
                             기업 고객을 위한<br />최고의 비즈니스 파트너!
                         </div>
-                        <div class="text_wrap">
+                        <div class="text_wrap" data-aos="fade-up" data-aos-delay="200">
                             <p>기업체 임직원의 라이프 스타일을 제안하는 신세계 법인영업입니다.</p>
                             <div class="cs_info">
                                 <span class="sub">구매상담</span>
@@ -91,19 +169,19 @@
                     </div>
                     <div class="section_bottom">
                         <div class="partner_list">
-                            <div class="item">
+                            <div class="item" data-aos="fade-up" data-aos-delay="0">
                                 <div class="item_title">상품권</div>
                                 <p>신세계백화점, 이마트는 물론 쇼핑, 외식, 레저 등 다양한가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.</p>
                             </div>
-                            <div class="item">
+                            <div class="item" data-aos="fade-up" data-aos-delay="100">
                                 <div class="item_title">기업체 GIFT</div>
                                 <p>임직원 선물, 판촉, 사은품 등 고객의 입장에서 사용하시는 목적에 맞게 폭넓은 아이템을 다양한 가격대로 설계해 드립니다.</p>
                             </div>
-                            <div class="item">
+                            <div class="item" data-aos="fade-up" data-aos-delay="200">
                                 <div class="item_title">B2B/B2E</div>
                                 <p>고객사 맞춤형 서비스를 제공하며 많은 경험과 인프라로 구성된 경쟁력 있는 최적의 상품을 제안해 드립니다.</p>
                             </div>
-                            <div class="item">
+                            <div class="item" data-aos="fade-up" data-aos-delay="300">
                                 <div class="item_title">유니폼</div>
                                 <p>성공하는 기업은 패션도 전략입니다. 앞서가는 패션과 품질로 기업의 목표달성과 브랜드가치를 높여드립니다.</p>
                             </div>
@@ -130,18 +208,18 @@
             <div class="main_section gift_card">
                 <div class="section_inner">
                     <div class="section_top">
-                        <div class="title">
+                        <div class="title" data-aos="fade-up">
                             <span class="sub">신세계를 선물하세요!</span>
                             기업 신세계상품권
                         </div>
-                        <div class="text_wrap">
+                        <div class="text_wrap" data-aos="fade-up" data-aos-delay="200">
                             <p>신세계상품권은 신세계백화점, 이마트는 물론 쇼핑/외식/레저 등 다양한 가맹점에서 폭 넓게 사용하실 수 있는 선물입니다.
                                 <br />
                                 신세계상품권은 5만원, 10만원, 50만원 총 3종이 준비되어 있습니다.
                             </p>
                         </div>
                     </div>
-                    <div class="section_bottom">
+                    <div class="section_bottom" data-aos="fade-up" data-aos-delay="400">
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
@@ -230,11 +308,11 @@
             <div class="main_section gift_pd">
                 <div class="section_inner">
                     <div class="section_top">
-                        <div class="title">
+                        <div class="title" data-aos="fade-up">
                             <span class="sub">신세계백화점 품격 그대로!</span>
                             임직원 선물 및 <span class="br">판촉물</span>
                         </div>
-                        <div class="text_wrap">
+                        <div class="text_wrap" data-aos="fade-up" data-aos-delay="200">
                             <p>임직원 선물, 판촉, 사은품 등
                                 <br />
                                 선물을 받는 분의 취향과 용도를 연구하여
@@ -243,7 +321,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="section_bottom gift_pd_slide_wrap">
+                    <div class="section_bottom gift_pd_slide_wrap" data-aos="fade-in" data-aos-delay="400">
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
@@ -305,14 +383,14 @@
             <div class="main_section mall">
                 <div class="section_inner">
                     <div class="section_top">
-                        <div class="title">
+                        <div class="title" data-aos="fade-up">
                             B2B/B2E 몰<br />고객사 맞춤형 <span class="br">B2B/B2E 서비스 제공</span>
                         </div>
                         <!-- <div class="text_wrap">
                         <p></p>
                     </div> -->
                     </div>
-                    <div class="section_bottom">
+                    <div class="section_bottom" data-aos="fade-up" data-aos-delay="200">
                         <div class="text_wrap">
                             <p>기업체용 최적 상품/기업체 임직원을 위한 복지상품을 제안해 드립니다.</p>
                             <p>많은 경험과 인프라로 구성된 경쟁력 있는 상품과 편리한 시스템을 제공합니다.</p>
@@ -326,7 +404,7 @@
             <!-- 유니폼 -->
             <div class="main_section uniform">
                 <div class="section_inner">
-                    <div class="section_top">
+                    <div class="section_top" data-aos="fade-right">
                         <div class="title">
                             <span class="sub">유니폼은 마케팅의 시작!</span>
                             법인영업 유니폼
@@ -345,37 +423,37 @@
                         </div>
                     </div>
                     <div class="section_bottom">
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="0">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_office.jpg" alt="" />
                             </div>
                             <span>office</span>
                         </div>
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="100">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_franchise.jpg" alt="" />
                             </div>
                             <span>franchise</span>
                         </div>
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="200">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_cooking.jpg" alt="" />
                             </div>
                             <span>cooking</span>
                         </div>
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="300">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_shop.jpg" alt="" />
                             </div>
                             <span>shop</span>
                         </div>
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="400">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_resort.jpg" alt="" />
                             </div>
                             <span>resort</span>
                         </div>
-                        <div class="card">
+                        <div class="card" data-aos="fade-up" data-aos-delay="500">
                             <div class="img_wrap">
                                 <img src="../../dist/images/content/person_working.jpg" alt="" />
                             </div>
@@ -407,6 +485,14 @@
             <!-- //공통영역2 -->
         </div>
     </div>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 
 </html>

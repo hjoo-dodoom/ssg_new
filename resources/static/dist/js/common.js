@@ -1238,6 +1238,11 @@ function applyChoicesToSelect(element) {
             itemSelectText: '',
         });
 
+        var choicesOuter = findParentByClass(element, 'choices');
+        if (choicesOuter) {
+            choicesOuter.setAttribute('data-lenis-prevent', 'true');
+        }
+
         element.classList.add('choices-applied');
 
         var productOption = element.getAttribute('product-option');

@@ -133,15 +133,20 @@
 #footer .ft_bottom {padding:4rem 0 7.4rem; display: flex; justify-content: space-between; align-items: flex-start;}
 #footer .ft_bottom .ft_info{display:flex;flex-wrap:wrap;max-width:72rem;opacity:0.7;word-break: keep-all;line-height: 1.6;}
 #footer .ft_bottom .ft_info .ft_copy{width: 100%;}
-#footer .ft_bottom .ft_familysite{position: relative; width:100%; max-width: 16rem;  border-bottom: 1px solid #828282; font-size:1.6rem;}
-#footer .ft_bottom .ft_familysite strong{position:relative; display: block; padding: 1.2rem 0;}
-#footer .ft_bottom .ft_familysite strong::after{content:''; position: absolute; right:0; top: 50%; transform: translateY(-50%); transform-origin: 50% 50%; display:inline-block; width:1.6rem; height:1.6rem; background-position: center;background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_arrow_top_gray.svg');transition: transform 0.5s ease;}
-#footer .ft_bottom .ft_familysite:hover strong::after{transform: translateY(-50%) rotate(180deg);}
-#footer .ft_bottom .ft_familysite ul {position: absolute; display:none; bottom: 4.5rem; left: 0; border: 1px solid #828282; background-color: #232323; padding: 1.6rem 1.8rem 1rem; width: 100%;}
+#footer .ft_bottom .ft_familysite{position: relative; width: 18.5rem; text-align: center; z-index: 11; margin-top: -1rem;}
+#footer .ft_bottom .ft_familysite strong{position:relative; font-size: 1.6rem; color: #999999; display: block; line-height: 1; border: 1px solid transparent; padding: 1.2rem 0; box-sizing: border-box; width: 100%; transition: all 0.2s ease-in-out; cursor: pointer;}
+#footer .ft_bottom .ft_familysite strong::after{content: ''; width: 15rem; height: 100%; border-bottom: 1px solid #828282; display: block; position: absolute; bottom: 0; left: 50%; box-sizing: border-box; transition: all 0.1s; transform: translateX(-50%);}
+#footer .ft_bottom .ft_familysite strong::before{content: ''; width: 100%; height: 0; display: block; position: absolute; bottom: 1px; left: 50%; box-sizing: border-box; transition: all 0.1s ease-in-out; transform: translateX(-50%);}
+#footer .ft_bottom .ft_familysite:hover strong::after{width: 100%;}
+#footer .ft_bottom .ft_familysite:hover strong::before{height: 100%; border-left: 1px solid #828282; border-right: 1px solid #828282; transition-delay: 0.1s;}
+#footer .ft_bottom .ft_familysite:hover strong{background: #323232; color: #fff; transition: all 0.1s ease-in-out;}
+#footer .ft_bottom .ft_familysite strong .arrow{display: inline-block; width: 1.6rem; height: 1.6rem; background: url('../../dist/images/common/icon_arrow_top_gray.svg') no-repeat center; background-size: contain; vertical-align: middle; margin-left: 3.6rem; transition: transform 0.2s ease-in-out;}
+#footer .ft_bottom .ft_familysite:hover strong .arrow{transform: rotate(180deg);}
+#footer .ft_bottom .ft_familysite ul {position: absolute; display: none; bottom: 4.0rem; left: 0; border: 1px solid #828282; background-color: #232323; width: 100%; color: #949494; font-size: 1.4rem; box-sizing: border-box; text-align: left; padding: 0; margin: 0;}
 #footer .ft_bottom .ft_familysite:hover ul{display:block;}
-#footer .ft_bottom .ft_familysite ul li {color: #999999; margin-bottom: .8rem;display: block;}
-#footer .ft_bottom .ft_familysite ul li:hover{color:#fff;}
-#footer .ft_bottom .ft_familysite ul li + li{margin-top:.1rem;}
+#footer .ft_bottom .ft_familysite ul li {display: block; margin: 0;}
+#footer .ft_bottom .ft_familysite ul li a {display: inline-block; width: 100%; padding: 1rem 2rem; box-sizing: border-box; transition: all 0.2s; color: #949494;}
+#footer .ft_bottom .ft_familysite ul li a:hover {color: #fff; background: #323232;}
 
 @media screen and (max-width: 1020px) {
     #footer{padding-left: 2.4rem; padding-right:2.4rem;}
@@ -156,8 +161,13 @@
     #footer .ft_bottom .ft_info{font-size:1.4rem; line-height: 1.8;}
     #footer .ft_bottom .ft_info span{display: block;}
     #footer .ft_bottom .ft_info .gubun{display: none;}
-    #footer .ft_bottom .ft_familysite{margin-bottom: 3.2rem; max-width: 100%; font-size:1.4rem;}
-
+    #footer .ft_bottom .ft_familysite{margin-bottom: 3.2rem; max-width: 100%; text-align: left; width: 100%; margin-top: 0;}
+    #footer .ft_bottom .ft_familysite strong{font-size: 1.5rem; padding: 1.5rem 0; border: none; width: 100%; display: flex; justify-content: space-between; align-items: center;}
+    #footer .ft_bottom .ft_familysite strong::before{display: none;}
+    #footer .ft_bottom .ft_familysite strong::after{display: block; width: 100%; left: 0; transform: none;}
+    #footer .ft_bottom .ft_familysite:hover strong{background: none; color: #999999;}
+    #footer .ft_bottom .ft_familysite strong .arrow{width: 1.6rem; height: 1.6rem; margin-left: 0;}
+    #footer .ft_bottom .ft_familysite ul {bottom: 100%; margin-bottom: 0; width: 100%;}
 
     #ft_top{padding:3rem 0 2rem;display: block;}
     #ft_logo img{display: block;}

@@ -887,7 +887,7 @@
 .od_table > table > tbody > tr > th .info_hover{margin-left:4px;}
 .od_table > table > tbody > tr > td * + .form_btns{margin-top:2rem;}
 .od_table > table > tbody > tr > td p{font-size:1.5rem;line-height: 1.6;}
-.od_table.input_md > table > tbody > tr > td .input{width:100%; max-width:25rem;}
+.od_table.input_md > table > tbody > tr > td .input{width: 100%; max-width: 43rem; }
 .od_table .flex-row {display: -ms-flexbox; display: flex; width:100%;}
 .od_table .flex-item {flex: 1; padding:2.2rem 0; display:flex; box-sizing: border-box; border-bottom:1px solid #E6E6E6;}
 .od_table .flex-item + .flex-item{margin-left:8rem;}
@@ -902,7 +902,7 @@
 .file_upload .file_item  input[type="file"] {display: none;}
 .file_upload .file_item  .file_name {margin-left:1.4rem; color:#666666; font-size:1.6rem; font-weight:500;}
 .file_upload .file_item  .file_name.selected{color:#000;}
-.file_upload .file_item .btn_download{display: block; margin-top:1.3rem; color:#BEA36B; font-size:1.6rem;font-weight:600;}
+.file_upload .file_item .btn_download{display: block; margin-top:1.3rem; color:#F22C2D; font-size:1.6rem;font-weight:600;}
 .file_upload .file_item .btn_download:after{content:""; vertical-align: middle; display: inline-block; margin-left: .4rem; width:1.6rem;height:1.6rem;background-image: url('../images/common/icon_download.svg');}
 
 @media screen and (max-width: 1020px) {

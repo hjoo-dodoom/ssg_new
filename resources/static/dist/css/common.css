@@ -297,7 +297,7 @@ html .simplebar_visible .simplebar-scrollbar:before{opacity: 1 !important;}
 .checkbox.checkbox_type1 input:checked + .ck_icon{border:1px solid #000;background-color: #000;background-image: url('../../dist/images/common/checkbox_type1_active.svg');}
 .checkbox.checkbox_type1.single{padding-left:2.4rem;}
 .checkbox.checkbox_type2{padding-left:3.4rem;padding-top:0.2rem;color:#000;min-height:2.4rem;font-size:1.7rem;}
-.checkbox.checkbox_type2 .ck_icon{width:2.4rem;height:2.4rem;border-radius:0.4rem;border:1px solid #d9d9d9;background-color: #fff;background-image: url('../../dist/images/common/checkbox_type1.svg');}
+.checkbox.checkbox_type2 .ck_icon{width:2.4rem;height:2.4rem;border-radius:0.4rem;border:1px solid #000;background-color: #fff;background-image: url('../../dist/images/common/checkbox_type1.svg');}
 .checkbox.checkbox_type2 input:checked + .ck_icon{border:1px solid #000;background-color: #000;background-image: url('../../dist/images/common/checkbox_type1_active.svg');}
 .checkbox.checkbox_type2.single{padding-left:2.4rem;}
 
@@ -371,7 +371,7 @@ top: 0;transform: translateX(-10px);background: #f52121;opacity: 0.75;backdrop-f
 .btn.btn_type3{height:5.8rem;font-size:1.8rem;font-weight:600;width:15rem;}
 .btn.btn_type4{height:5.4rem;font-size:1.8rem;font-weight:600;width:26rem;}
 .btn.btn_type5{height:4.6rem;font-size:1.6rem;font-weight:600;width:12rem;}
-.btn.btn_type6{height:3.8rem;font-size:1.6rem;font-weight:600;width:26rem;}
+.btn.btn_type6{height:4.6rem;font-size:1.4rem;font-weight:600;width:17rem;}
 .btn.w100{width:100%;}
 .btn.w300{width:30rem;}
 .btn.w450{width:45rem;}
@@ -380,7 +380,7 @@ top: 0;transform: translateX(-10px);background: #f52121;opacity: 0.75;backdrop-f
 .btn_type3.btn_inline{padding-left:2.8rem;padding-right:2.8rem;}
 .btn_type4.btn_inline{padding-left:2.8rem;padding-right:2.8rem;}
 .btn_type5.btn_inline{padding-left:2.8rem;padding-right:2.8rem;}
-.btn_type6.btn_inline{padding-left:1.6rem;padding-right:1.6rem;}
+.btn_type6.btn_inline{padding-left:2.1rem;padding-right:2.1rem;}
 .btn.btn_inline{width:auto;}
 
 @media screen and (max-width: 1020px) {

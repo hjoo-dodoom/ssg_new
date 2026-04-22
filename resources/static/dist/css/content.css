@@ -407,7 +407,7 @@
 .form_type4 input[type="text"],
 .form_type4 input[type="password"],
 .form_type4 input[type="tel"],
-.form_type4 input[type="email"]{height:4.4rem;border-radius:0.6rem;padding-left:1.4rem;border:0;background-color:#fff;}
+.form_type4 input[type="email"]{font-size: 1.8rem;height:4.4rem;border-radius:0.6rem;padding-left:1.4rem;border:0;background-color:#fff;}
 
 .form_type4 select{height:4.4rem;border-radius:0.6rem;padding-left:1.4rem;border:0;background-color:#F4F4F4;}
 .form_type4 textarea{border-radius:0.6rem;padding:1.4rem;border:0;background-color:#fff;height:14rem;resize: none;}

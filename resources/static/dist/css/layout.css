@@ -7,7 +7,9 @@
 }
 
 
-#hd_logo{width:100%; max-width: 18.5rem; flex-shrink: 0;}
+#hd_logo{width:100%; max-width: 20rem; flex-shrink: 0;}
+#hd_logo a{width: 100%;}
+#hd_logo img{width:100%; height: auto;}
 #header{width:100%; padding-top:2rem; position:absolute; top:0; left:0; color:#000; background-color: transparent;}
 #header.dark_mode{color:#fff;}
 #header:not(.open) .black_logo{display:block;}

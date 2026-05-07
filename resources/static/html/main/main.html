@@ -360,20 +360,42 @@
                         </div>
                     </div>
                     <script>
-                        var swiperGiftList = new Swiper('.main_section.gift_pd .swiper', {
-                            slidesPerView: 'auto',
-                            loop: true,
-                            spaceBetween: 40,
-                            breakpoints: {
-                                1024: {
-                                    spaceBetween: 16,
-                                }
-                            },
-                            autoplay: {
-                                delay: 0,
-                                disableOnInteraction: false
-                            },
-                            speed: 2000,
+                        var swiperGiftList = null;
+
+                        function initGiftSwiper() {
+                            if (swiperGiftList) {
+                                swiperGiftList.destroy(true, true);
+                            }
+                            swiperGiftList = new Swiper('.main_section.gift_pd .swiper', {
+                                slidesPerView: 'auto',
+                                loop: true,
+                                spaceBetween: 40,
+                                observer: true,
+                                observeParents: true,
+                                allowTouchMove: false,
+                                breakpoints: {
+                                    1024: {
+                                        spaceBetween: 16,
+                                        allowTouchMove: true,
+                                    }
+                                },
+                                autoplay: {
+                                    delay: 0,
+                                    disableOnInteraction: false
+                                },
+                                speed: 2000,
+                            });
+                        }
+
+                        window.addEventListener('load', function () {
+                            initGiftSwiper();
+                        });
+
+                        window.addEventListener('resize', function () {
+                            clearTimeout(window._giftSwiperResizeTimeout);
+                            window._giftSwiperResizeTimeout = setTimeout(function () {
+                                initGiftSwiper();
+                            }, 200);
                         });
                     </script>
                 </div>

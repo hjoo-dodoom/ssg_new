@@ -362,6 +362,15 @@
                     <script>
                         var swiperGiftList = null;
 
+                        function fixSectionHeight() {
+                            // 실제 가용 높이를 px 단위로 구함 (카카오 브라우저 주소창 토글 대응)
+                            var vh = window.innerHeight;
+                            var sections = document.querySelectorAll('.main_section');
+                            sections.forEach(function (section) {
+                                section.style.minHeight = vh + 'px';
+                            });
+                        }
+
                         function initGiftSwiper() {
                             if (swiperGiftList) {
                                 swiperGiftList.destroy(true, true);
@@ -376,22 +385,27 @@
                                 breakpoints: {
                                     1024: {
                                         spaceBetween: 16,
-                                        allowTouchMove: true,
                                     }
                                 },
                                 autoplay: {
                                     delay: 0,
                                     disableOnInteraction: false
                                 },
-                                speed: 2000,
+                                speed: 4000,
                             });
                         }
 
+                        // 가로 폭이 변경될 때만 재초기화 (카카오 브라우저 주소창 토글에 의한 세로 리사이즈 무시)
+                        var lastWidth = window.innerWidth;
                         window.addEventListener('load', function () {
+                            fixSectionHeight();
                             initGiftSwiper();
                         });
 
                         window.addEventListener('resize', function () {
+                            if (window.innerWidth === lastWidth) return;
+                            lastWidth = window.innerWidth;
+                            fixSectionHeight();
                             clearTimeout(window._giftSwiperResizeTimeout);
                             window._giftSwiperResizeTimeout = setTimeout(function () {
                                 initGiftSwiper();

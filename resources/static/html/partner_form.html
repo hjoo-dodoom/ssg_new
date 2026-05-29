@@ -104,7 +104,7 @@
             <div class="container">
                 <form action="">
                     <div class="">
-                        <div class="od_box">
+                        <div class="od_box" id="basic-info">
                             <div class="od_title">
                                 <h3>기본정보</h3>
                                 <div class="od_sub">
@@ -680,6 +680,28 @@
         document.getElementById('reSendSms').addEventListener('click', function () {
             clearInterval(countdownInterval);
             startCountdown('sendSms', 'reSendSms', 'count_down');
+        });
+
+        // URL에 scroll=basic-info 파라미터가 있을 경우 기본정보 입력 위치로 스크롤
+        document.addEventListener('DOMContentLoaded', function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('scroll') === 'basic-info') {
+                setTimeout(function () {
+                    var target = document.getElementById('basic-info');
+                    if (target) {
+                        var targetOffset = getOffsetTop(target);
+                        var yOffset = targetOffset - 40; // 상단 여백 설정
+                        if (window.lenis) {
+                            window.lenis.scrollTo(yOffset);
+                        } else {
+                            window.scrollTo({
+                                top: yOffset,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }, 200);
+            }
         });
     </script>
 </body>

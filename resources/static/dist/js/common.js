@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 부드러운 페이지 스크롤
-    var lenis = new Lenis({
+    var lenis = window.lenis = new Lenis({
         duration: 1,
         easing: function (t) {
             return Math.min(1, 1.001 - Math.pow(2, -10 * t)); // 부드러운 감속

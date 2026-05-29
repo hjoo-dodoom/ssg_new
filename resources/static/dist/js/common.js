@@ -680,6 +680,10 @@ function toggleLayer(target, auto, button) {
 function openLayer(target) {
     document.querySelector(target).classList.add('show');
     document.querySelector('html').classList.add('mobile_hidden');
+    document.querySelector('html').style.overflow = 'hidden';
+    if (window.lenis) {
+        window.lenis.stop();
+    }
 }
 
 function closeLayer(button, target) {
@@ -708,6 +712,10 @@ function closeLayer(button, target) {
     if (htmlEl) {
         htmlEl.classList.remove('mobile_hidden');
     }
+    if (window.lenis) {
+        window.lenis.start();
+    }
+    htmlEl.style.overflow = 'unset';
 }
 
 

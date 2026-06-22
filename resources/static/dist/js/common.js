@@ -391,6 +391,27 @@ document.addEventListener('DOMContentLoaded', function () {
         slidesPerView: "auto",
     });
 });
+
+/* 헤더 활성화 메뉴 처리 */
+function setActiveHeaderMenu() {
+    var path = window.location.pathname;
+    var links = document.querySelectorAll('#hd_links .item a');
+    for (var i = 0; i < links.length; i++) {
+        var base = links[i].getAttribute('href').split('/').pop().split('.')[0];
+        if (base && path.indexOf(base) !== -1) {
+            links[i].classList.add('active');
+            break;
+        }
+    }
+}
+
+var headerObserver = new MutationObserver(function(mutations, obs) {
+    if (document.querySelector('#hd_links')) {
+        setActiveHeaderMenu();
+        obs.disconnect();
+    }
+});
+headerObserver.observe(document.documentElement, { childList: true, subtree: true });
 /*** //헤더 스크립트 ***/
 
 /* 모바일 전체메뉴 */

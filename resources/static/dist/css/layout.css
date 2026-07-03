@@ -81,11 +81,11 @@
 #hd_links .item a:not(:hover)::after {transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease, transform-origin 0s;}
 #hd_links .item a.active {color: #F22C2D !important; font-weight: 700 !important;}
 #header.open #hd_links .item a.active {color: #F22C2D !important;}
-#hd_links .item + .item{margin-left: 11rem;}
+#hd_links .item + .item{margin-left: 7rem;}
 
 
 @media screen and (max-width: 1820px) {
-    #hd_links .item + .item{margin-left:5rem;}
+    #hd_links .item + .item{margin-left:3rem;}
 }
 
 @media screen and (max-width: 1400px){

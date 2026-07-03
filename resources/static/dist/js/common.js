@@ -1843,3 +1843,11 @@ function toggleSlideItem(button, content, duration) {
     var speed = duration !== undefined ? duration : 600;
     slideToggle(targetSlide, speed);
 }
+
+// 팝업 열기
+function fnOpenSampleMall() {
+    const url = $('#sample_url').val();
+    const width = '1280';
+    const height = '720';
+    window.open(url, "_blank", `toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=${width},height=${height}`);
+}

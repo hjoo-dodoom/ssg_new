@@ -65,21 +65,21 @@
 				<div class="policy_wrap">
 					<div class="title">주요 개인정보 처리 표시(라벨링)</div>
 					<ul class="policy_mark">
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark1.png">일반 개인정보 수집
+						<li class="item" data-target="policy_sec1"><img src="/resources/static/dist/images/content/policy_mark1.png">일반 개인정보 수집
 						</li>
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark2.png">개인정보 처리목적
+						<li class="item" data-target="policy_sec2"><img src="/resources/static/dist/images/content/policy_mark2.png">개인정보 처리목적
 						</li>
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark3.png">개인정보의 보유 기간
+						<li class="item" data-target="policy_sec5"><img src="/resources/static/dist/images/content/policy_mark3.png">개인정보의 보유 기간
 						</li>
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark4.png">개인정보 처리위탁
+						<li class="item" data-target="policy_sec4"><img src="/resources/static/dist/images/content/policy_mark4.png">개인정보 처리위탁
 						</li>
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark5.png">개인정보의 제공</li>
-						<li class="item"><img src="/resources/static/dist/images/content/policy_mark6.png">개인정보 열람 청구
+						<li class="item" data-target="policy_sec3"><img src="/resources/static/dist/images/content/policy_mark5.png">개인정보의 제공</li>
+						<li class="item" data-target="policy_sec6"><img src="/resources/static/dist/images/content/policy_mark6.png">개인정보 열람 청구
 						</li>
 					</ul>
 
 					<ul class="policy_list toggle_list">
-						<li>
+						<li id="policy_sec1">
 							<button type="button" class="top_cnt"><span>제 1조 총칙</span>
 								<div class="marks"><img src="/resources/static/dist/images/content/policy_mark1.png">
 								</div>
@@ -93,7 +93,7 @@
 								</ol>
 							</div>
 						</li>
-						<li>
+						<li id="policy_sec2">
 							<button type="button" class="top_cnt"><span>제 2조 수집하는 개인정보 항목 및 방법</span>
 								<div class="marks"><img
 										src="/resources/static/dist/images/content/policy_mark2.png"><img
@@ -291,7 +291,7 @@
 								</ol>
 							</div>
 						</li>
-						<li>
+						<li id="policy_sec3">
 							<button type="button" class="top_cnt"><span>제 3조 개인정보 수집/이용 목적</span>
 								<div class="marks"><img src="/resources/static/dist/images/content/policy_mark4.png">
 								</div>
@@ -325,7 +325,7 @@
 								</ol>
 							</div>
 						</li>
-						<li>
+						<li id="policy_sec4">
 							<button type="button" class="top_cnt"><span>제 4조 수집한 개인정보의 처리위탁</span>
 								<div class="marks"><img src="/resources/static/dist/images/content/policy_mark5.png">
 								</div>
@@ -388,7 +388,7 @@
 								</ol>
 							</div>
 						</li>
-						<li>
+						<li id="policy_sec5">
 							<button type="button" class="top_cnt"><span>제 5조 개인정보의 보유, 이용기간 및 파기</span>
 								<div class="marks"><img
 										src="/resources/static/dist/images/content/policy_mark6.png"><img
@@ -410,7 +410,7 @@
 								</ol>
 							</div>
 						</li>
-						<li>
+						<li id="policy_sec6">
 							<button type="button" class="top_cnt"><span>제 6조 개인정보의 열람, 정정, 탈퇴 및 동의 철회 방법</span>
 								<div class="marks"><img
 										src="/resources/static/dist/images/content/policy_mark8.png"><img
@@ -717,6 +717,37 @@
 					}
 				});
 			}
+		});
+
+		// 주요 개인정보 처리 표시(라벨링) 클릭 시 해당 조항으로 스크롤 이동
+		document.addEventListener('DOMContentLoaded', function () {
+			var markItems = document.querySelectorAll('.policy_mark .item[data-target]');
+
+			Array.prototype.forEach.call(markItems, function (item) {
+				item.style.cursor = 'pointer';
+
+				item.addEventListener('click', function () {
+					var targetId = item.getAttribute('data-target');
+					var target = document.getElementById(targetId);
+					if (!target) return;
+
+					// 접혀 있는 조항이면 먼저 펼침
+					var button = target.querySelector('.top_cnt');
+					var content = target.querySelector('.bottom_cnt');
+					if (button && content && !target.classList.contains('active')) {
+						toggleSlideItem(button, content);
+					}
+
+					// 스크롤 이동 (Lenis 사용 시 부드럽게, 미지원 시 기본 스크롤)
+					if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+						window.lenis.scrollTo(target, { offset: 0 });
+					} else if (target.scrollIntoView) {
+						target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					} else {
+						window.scrollTo(0, target.offsetTop );
+					}
+				});
+			});
 		});
 
 		// 개인정보처리방침 팝업

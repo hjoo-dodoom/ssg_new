@@ -996,7 +996,7 @@
 }
 
 @media screen and (max-width: 1240px) {
-    .partner_notice{margin-top: 8rem; padding-top: 3rem;}
+    /* .partner_notice{margin-top: 8rem; padding-top: 3rem;} */
     .partner_notice .pn_title{font-size:2.6rem;}
     .partner_notice .pn_text{margin-top:1rem; font-size:1.6rem; line-height:1.6;}
     .partner_notice .pn_process{flex-wrap:wrap;}

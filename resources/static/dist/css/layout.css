@@ -79,8 +79,8 @@
 #hd_links .item a::after {content: ''; position: absolute; bottom: 0; left: 0; height: 1px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease, transform-origin 0s 0.4s; pointer-events: none;}
 #hd_links .item a:hover::after {transform: scaleX(1); transform-origin: left; transition: transform 0.4s ease;}
 #hd_links .item a:not(:hover)::after {transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease, transform-origin 0s;}
-#hd_links .item a.active {color: #F22C2D !important; font-weight: 700 !important;}
-#header.open #hd_links .item a.active {color: #F22C2D !important;}
+#hd_links .item a.active {color: #D80C18 !important; font-weight: 700 !important;}
+#header.open #hd_links .item a.active {color: #D80C18 !important;}
 #hd_links .item + .item{margin-left: 7rem;}
 
 /* GNB 2depth */
@@ -96,7 +96,7 @@
 #hd_links .item.has_sub > .sub_menu li a{display:block; padding:.9rem 2rem; font-size:1.7rem; font-weight:400; color:#333; white-space:nowrap; text-align:left; transition: color 0.2s, background-color 0.2s;}
 #hd_links .item.has_sub > .sub_menu li a::before,
 #hd_links .item.has_sub > .sub_menu li a::after{display:none;}
-#hd_links .item.has_sub > .sub_menu li a:hover{color:#F22C2D; background-color:#F7F7F7;}
+#hd_links .item.has_sub > .sub_menu li a:hover{color:#D80C18; background-color:#F7F7F7;}
 
 /* 전체메뉴(햄버거) 2depth : 클릭 아코디언 */
 #header.open #hd_links .item.has_sub > a{padding-right:5.4rem;}
@@ -244,21 +244,30 @@
     #header .btn_hamburger{margin-left: 1.5rem;}
 }
 
-/* 메인 팝업 */
-#main_popup{display:none; position:fixed; top:0; left:0; width:100%; height:100%; padding:2rem; box-sizing:border-box; align-items:center; justify-content:center;}
-#main_popup.show{display:flex;}
-#main_popup .popup_bg{position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,.5); cursor:pointer;}
-#main_popup .popup_content{position:relative; z-index:1; display:flex; flex-direction:column; width:100%; max-width:52rem; max-height:calc(100vh - 4rem); overflow:hidden; border-radius:1.6rem; background-color:#fff; box-shadow:0 1rem 4rem rgba(0,0,0,.3);}
-#main_popup .popup_body{flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; font-size:0; line-height:0;}
+/* 메인 팝업 (PC 우측 여백 고정 / 모바일 하단 시트) */
+#main_popup{--vh:100vh; --popup-shift:6rem; display:none; position:fixed; top:0; left:0; width:100%; height:100vh;}
+@supports (height:100dvh) {
+    #main_popup{--vh:100dvh; height:100dvh;}
+}
+#main_popup.show{display:block;}
+#main_popup .popup_bg{position:fixed; top:0; left:0; width:100%; height:100%; background-color:#101418; opacity:.4; cursor:pointer;}
+/* PC : 메인 비주얼 우측 여백, 세로 중앙에서 --popup-shift 만큼 아래로 (가로 위치는 헤더 좌우 여백과 동일하게 맞춤) */
+/* max-height : 아래로 밀린 만큼(2 x shift) + 하단 최소 여백(2 x 2rem)을 뺀 값이라 화면이 짧아도 잘리지 않음 */
+#main_popup .popup_content{position:fixed; top:50%; left:auto; right:6rem; transform:translateY(calc(-50% + var(--popup-shift))); z-index:1; display:flex; flex-direction:column; width:42rem; max-width:calc(100% - 12rem); max-height:calc(100% - (var(--popup-shift) * 2) - 4rem); overflow:hidden; border-radius:1.2rem;}
+
+@media screen and (max-width: 1536px) {
+    #main_popup .popup_content{right:2.4rem; max-width:calc(100% - 4.8rem);}
+}
+#main_popup .popup_body{flex:1 1 auto; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; font-size:0; line-height:0;}
 #main_popup .popup_body img{display:block; width:100%; height:auto; border:0;}
 #main_popup .popup_body area{cursor:pointer;}
-#main_popup .popup_bottom{flex-shrink:0; display:flex; justify-content:space-between; align-items:center; padding:1.4rem 2rem; border-top:1px solid #ebebeb; background-color:#fff;}
-#main_popup .popup_bottom button{padding:.6rem 0; border:0; background-color:transparent; color:#767676; font-size:1.5rem; line-height:1.4; cursor:pointer;}
-#main_popup .popup_bottom button:hover{color:#000; text-decoration:underline;}
+#main_popup .popup_bottom{flex-shrink:0; display:flex; align-items:center; justify-content: space-between; height:4.8rem; padding:1.3rem 3rem 1.3rem 3rem; box-sizing:border-box; background-color:#fff;}
+#main_popup .popup_bottom button{padding:0; border:0; background-color:transparent; color:#343a40; font-size:1.3rem; font-weight:600; line-height:1.38; cursor:pointer;}
+#main_popup .popup_bottom .btn_today{text-align:left;}
+#main_popup .popup_bottom .btn_close{text-align:right;}
 
+/* 모바일 : 화면 하단에 붙는 바텀시트 (상단 모서리만 라운드 + 드래그 핸들) */
 @media screen and (max-width: 1020px) {
-    #main_popup{padding:1.6rem;}
-    #main_popup .popup_content{max-width:36rem; max-height:calc(100vh - 3.2rem); border-radius:1.2rem;}
-    #main_popup .popup_bottom{padding:1.2rem 1.6rem;}
-    #main_popup .popup_bottom button{font-size:1.4rem;}
+    #main_popup .popup_content{top:auto; bottom:0; left:0; right:auto; transform:none; width:100%; max-width:100%; max-height:calc(var(--vh) - 2rem); border-radius:1.2rem 1.2rem 0 0;}
+    #main_popup .popup_content:before{content:''; position:absolute; top:.8rem; left:50%; transform:translateX(-50%); z-index:2; width:5.6rem; height:.4rem; border-radius:9.9rem; background-color:#848c94;}
 }

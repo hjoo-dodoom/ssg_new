@@ -17,7 +17,7 @@
 #header.open .black_logo{display:none;}
 #header.open .white_logo{display:block;}
 #header.dark_mode .black_logo{display:none;}
-#header.dark_mode .white_logo{display:block;}
+#header.dark_mode .white_logo{display:block;position: relative;z-index:1;}
 #header .hd_inner{height:11rem; display:flex; gap: 2rem; justify-content:space-between; align-items: center; padding: calc(3.5rem + 2rem) 6rem;}
 #header .btn_hamburget_close{display:none; opacity: 0; width: 3.2rem; height: 3.2rem; position: absolute; top: 6rem; right: 6rem; border: 0; overflow: hidden; background-color:transparent; background-position: center; background-size: 100%; background-repeat: no-repeat; background-image: url('../../dist/images/common/icon_close_white.svg'); transition: transform 0.3s ease, opacity 0.3s ease;}
 #header .btn_hamburget_close:hover{transform: rotate(90deg);}
@@ -69,7 +69,7 @@
 #header.open  #hd_links .item:hover{color:#FFFFFF;}
 #header.open  #hd_links .item a{padding: 1rem 0;font-size:5.2rem;}
 #header.open  #hd_links .item + .item{margin-top: 4rem; margin-left: 0;}
-#header.open .btn_hamburget_close{display: block;opacity: 1;}
+#header.open .btn_hamburget_close{display: block;opacity: 1;z-index:1;}
 #header.open .hd_info{display:block;}
 #header.open .hd_sites{display:none;}
 

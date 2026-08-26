@@ -8,7 +8,23 @@ function displayMenu() {
 
 
     if (header.classList.contains('open')) {
+        // 닫히는 동안 GNB 2depth(.sub_menu)가 잠깐 보였다 사라지지 않도록 잠금
+        header.classList.add('menu_closing');
         header.classList.remove('open');
+
+        // 전체메뉴 닫을 때 2depth 아코디언 초기화
+        var openedSubs = header.querySelectorAll('#hd_links .item.sub_open');
+        for (var i = 0; i < openedSubs.length; i++) {
+            openedSubs[i].classList.remove('sub_open');
+        }
+
+        // 닫힌 상태가 반영된 뒤 잠금 해제 (해제 시점엔 이미 opacity:0 이라 전환이 발생하지 않음)
+        void header.offsetWidth;
+        if (header._menuClosingTimer) clearTimeout(header._menuClosingTimer);
+        header._menuClosingTimer = setTimeout(function () {
+            header.classList.remove('menu_closing');
+            header._menuClosingTimer = null;
+        }, 300);
 
         html.style.overscrollBehavior = '';
         html.style.scrollBehavior = '';
@@ -16,6 +32,12 @@ function displayMenu() {
         body.style.top = '';
         body.style.width = '';
     } else {
+        // 닫는 중 다시 열릴 경우 잠금 해제
+        if (header._menuClosingTimer) {
+            clearTimeout(header._menuClosingTimer);
+            header._menuClosingTimer = null;
+        }
+        header.classList.remove('menu_closing');
         header.classList.add('open');
 
         html.style.overscrollBehavior = 'none';
@@ -1844,10 +1866,170 @@ function toggleSlideItem(button, content, duration) {
     slideToggle(targetSlide, speed);
 }
 
+// 전체메뉴(햄버거) 2depth 아코디언 : PC GNB는 hover, 전체메뉴는 클릭으로 토글
+$(document).on('click', '#hd_links .item.has_sub > a', function (e) {
+    var $header = $('#header');
+    if (!$header.hasClass('open')) return;
+
+    e.preventDefault();
+    $(this).parent().toggleClass('sub_open').siblings('.item').removeClass('sub_open');
+});
+
 // 팝업 열기
-function fnOpenSampleMall() {
-    const url = $('#sample_url').val();
+function fnOpenSampleMall(sampleUrl) {
+    const url = sampleUrl || $('#sample_url').val();
     const width = '1280';
     const height = '720';
     window.open(url, "_blank", `toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=100,width=${width},height=${height}`);
+}
+
+/* ============================================
+ * 메인 팝업
+ * ============================================ */
+
+// 쿠키 저장 (days 미지정 시 세션 쿠키)
+function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + expires + '; path=/';
+}
+
+// 쿠키 조회
+function getCookie(name) {
+    var key = encodeURIComponent(name) + '=';
+    var list = document.cookie ? document.cookie.split(';') : [];
+    for (var i = 0; i < list.length; i++) {
+        var item = list[i];
+        while (item.charAt(0) === ' ') {
+            item = item.substring(1);
+        }
+        if (item.indexOf(key) === 0) {
+            return decodeURIComponent(item.substring(key.length));
+        }
+    }
+    return null;
+}
+
+// 오늘 자정까지 유효한 쿠키 저장
+function setTodayCookie(name, value) {
+    var now = new Date();
+    var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+    document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value) + '; expires=' + midnight.toUTCString() + '; path=/';
+}
+
+// 이미지맵 반응형 : data-map-base-width(원본 좌표 기준 너비) 대비 실제 노출 너비 비율로 area 좌표 재계산
+function resizeImageMap(img) {
+    if (!img) return;
+
+    var mapName = (img.getAttribute('usemap') || '').replace('#', '');
+    if (!mapName) return;
+
+    var map = document.querySelector('map[name="' + mapName + '"]');
+    if (!map) return;
+
+    var baseWidth = parseFloat(img.getAttribute('data-map-base-width')) || img.naturalWidth;
+    var currentWidth = img.clientWidth;
+    if (!baseWidth || !currentWidth) return;
+
+    var ratio = currentWidth / baseWidth;
+    var areas = map.getElementsByTagName('area');
+
+    for (var i = 0; i < areas.length; i++) {
+        var area = areas[i];
+
+        // 최초 1회 원본 좌표 보관
+        if (!area.getAttribute('data-coords')) {
+            area.setAttribute('data-coords', area.getAttribute('coords') || '');
+        }
+
+        var origin = (area.getAttribute('data-coords') || '').split(',');
+        var scaled = [];
+        for (var j = 0; j < origin.length; j++) {
+            scaled.push(Math.round(parseFloat(origin[j]) * ratio));
+        }
+        area.setAttribute('coords', scaled.join(','));
+    }
+}
+
+// 이미지맵 초기화 (이미지 로드 완료 후 + 리사이즈 시 재계산)
+function initImageMap(target) {
+    var scope = target ? (typeof target === 'string' ? document.querySelector(target) : target) : document;
+    if (!scope) return;
+
+    var images = scope.querySelectorAll('img[usemap]');
+    if (!images.length) return;
+
+    for (var i = 0; i < images.length; i++) {
+        (function (img) {
+            if (img.complete) {
+                resizeImageMap(img);
+            } else {
+                img.addEventListener('load', function () {
+                    resizeImageMap(img);
+                });
+            }
+        })(images[i]);
+    }
+
+    if (!window.imageMapResizeBinded) {
+        window.imageMapResizeBinded = true;
+        window.addEventListener('resize', function () {
+            var all = document.querySelectorAll('img[usemap]');
+            for (var k = 0; k < all.length; k++) {
+                resizeImageMap(all[k]);
+            }
+        });
+    }
+}
+
+// 메인 팝업 열기
+function openMainPopup(id) {
+    var popup = document.getElementById(id || 'main_popup');
+    if (!popup) return;
+
+    popup.classList.add('show');
+    document.querySelector('html').style.overflow = 'hidden';
+    if (window.lenis) {
+        window.lenis.stop();
+    }
+
+    initImageMap(popup);
+}
+
+// 메인 팝업 닫기
+function closeMainPopup(id) {
+    var popup = document.getElementById(id || 'main_popup');
+    if (!popup) return;
+
+    popup.classList.remove('show');
+    document.querySelector('html').style.overflow = 'unset';
+    if (window.lenis) {
+        window.lenis.start();
+    }
+}
+
+// 메인 팝업 오늘 하루 열지 않음
+function closeMainPopupToday(id) {
+    var popupId = id || 'main_popup';
+    setTodayCookie(popupId + '_hide', 'Y');
+    closeMainPopup(popupId);
+}
+
+// 메인 팝업 노출 여부 판단 후 오픈
+function initMainPopup(id) {
+    var popupId = id || 'main_popup';
+    if (getCookie(popupId + '_hide') === 'Y') return;
+
+    openMainPopup(popupId);
+
+    // ESC 키로 닫기
+    document.addEventListener('keydown', function (e) {
+        if (e.keyCode === 27 || e.key === 'Escape') {
+            closeMainPopup(popupId);
+        }
+    });
 }

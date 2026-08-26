@@ -1986,16 +1986,109 @@ function initImageMap(target) {
     }
 }
 
+// 배경(메인 페이지) 스크롤 잠금 처리
+var pageScrollLocked = false;
+
+// 페이지를 최상단으로 이동 (Lenis 사용 시 내부 스크롤 값까지 동기화)
+function resetPageScrollTop() {
+    if (window.lenis) {
+        window.lenis.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    if (document.body) {
+        document.body.scrollTop = 0;
+    }
+}
+
+// 스크롤을 허용할 팝업 내부 영역인지 확인
+function isPopupScrollArea(target) {
+    var el = target;
+    while (el && el.nodeType === 1) {
+        if (el.classList && el.classList.contains('popup_body')) return true;
+        el = el.parentElement;
+    }
+    return false;
+}
+
+// 휠 / 터치무브 차단 (팝업 내부 스크롤 영역은 허용)
+function preventPageScroll(e) {
+    if (isPopupScrollArea(e.target)) return;
+    if (e.cancelable) e.preventDefault();
+}
+
+// 스페이스, PageUp/Down, End, Home, 방향키 차단
+function preventPageScrollKey(e) {
+    if (isPopupScrollArea(e.target)) return;
+
+    var tag = (e.target && e.target.tagName ? e.target.tagName : '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+
+    var keys = [32, 33, 34, 35, 36, 38, 40];
+    if (keys.indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}
+
+// 스크롤바 유무로 콘텐츠 폭이 바뀌면 Swiper가 인라인으로 잡아둔 슬라이드 폭이 어긋나므로 재계산
+function updateSwiperSize() {
+    var swipers = document.querySelectorAll('.swiper');
+    for (var i = 0; i < swipers.length; i++) {
+        if (swipers[i].swiper && typeof swipers[i].swiper.update === 'function') {
+            swipers[i].swiper.update();
+        }
+    }
+}
+
+function lockPageScroll() {
+    if (pageScrollLocked) return;
+    pageScrollLocked = true;
+
+    // Lenis(부드러운 스크롤)는 overflow:hidden을 무시하므로 반드시 정지시켜야 함
+    if (window.lenis) {
+        window.lenis.stop();
+    }
+    document.documentElement.classList.add('mobile_hidden');
+    document.documentElement.style.overflow = 'hidden';
+
+    document.addEventListener('wheel', preventPageScroll, { passive: false });
+    document.addEventListener('touchmove', preventPageScroll, { passive: false });
+    document.addEventListener('keydown', preventPageScrollKey, false);
+
+    // 스크롤바가 사라지면서 넓어진 폭에 맞춰 슬라이더 재계산
+    setTimeout(updateSwiperSize, 0);
+}
+
+function unlockPageScroll() {
+    if (!pageScrollLocked) return;
+    pageScrollLocked = false;
+
+    document.removeEventListener('wheel', preventPageScroll, { passive: false });
+    document.removeEventListener('touchmove', preventPageScroll, { passive: false });
+    document.removeEventListener('keydown', preventPageScrollKey, false);
+
+    document.documentElement.classList.remove('mobile_hidden');
+    document.documentElement.style.overflow = '';
+
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+    }
+
+    if (window.lenis) {
+        window.lenis.start();
+    }
+
+    // 스크롤바가 다시 생기면서 좁아진 폭에 맞춰 슬라이더 재계산
+    setTimeout(updateSwiperSize, 0);
+}
+
 // 메인 팝업 열기
 function openMainPopup(id) {
     var popup = document.getElementById(id || 'main_popup');
     if (!popup) return;
 
     popup.classList.add('show');
-    document.querySelector('html').style.overflow = 'hidden';
-    if (window.lenis) {
-        window.lenis.stop();
-    }
+    lockPageScroll();
 
     initImageMap(popup);
 }
@@ -2006,10 +2099,7 @@ function closeMainPopup(id) {
     if (!popup) return;
 
     popup.classList.remove('show');
-    document.querySelector('html').style.overflow = 'unset';
-    if (window.lenis) {
-        window.lenis.start();
-    }
+    unlockPageScroll();
 }
 
 // 메인 팝업 오늘 하루 열지 않음
@@ -2024,7 +2114,25 @@ function initMainPopup(id) {
     var popupId = id || 'main_popup';
     if (getCookie(popupId + '_hide') === 'Y') return;
 
-    openMainPopup(popupId);
+    // Lenis가 DOMContentLoaded에서 생성되므로 그 이후에 열어야 스크롤 잠금이 정상 동작
+    var open = function () {
+        resetPageScrollTop();
+        openMainPopup(popupId);
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', open);
+    } else {
+        open();
+    }
+
+    // 이미지/폰트 로드 완료 후 뒤늦게 스크롤이 복원되는 브라우저 대응
+    window.addEventListener('load', function () {
+        var popup = document.getElementById(popupId);
+        if (popup && popup.classList.contains('show')) {
+            resetPageScrollTop();
+        }
+    });
 
     // ESC 키로 닫기
     document.addEventListener('keydown', function (e) {

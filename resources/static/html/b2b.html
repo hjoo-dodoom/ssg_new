@@ -207,6 +207,23 @@
                 //헤더&푸터 개발 완료시 삭제해주세요
                 var includePath = "../layout/footer.html";
                 includeFile(includePath, 'footer');
+
+                // .container 위치로 스크롤
+                setTimeout(function () {
+                    var target = document.getElementsByClassName('container')[0];
+                    if (target) {
+                        var targetOffset = getOffsetTop(target);
+                        var yOffset = targetOffset - 40; // 상단 여백 설정
+                        if (window.lenis) {
+                            window.lenis.scrollTo(yOffset);
+                        } else {
+                            window.scrollTo({
+                                top: yOffset,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }, 200);
             </script>
             <!-- //푸터 -->
             <!-- //공통영역2 -->
